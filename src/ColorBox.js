@@ -39,6 +39,7 @@ class ColorBox extends Component {
                     </div>
                     <span className='see-more' >More</span>
                 </div>
+
             </CopyToClipboard>
         );
     }
