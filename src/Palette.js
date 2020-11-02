@@ -4,6 +4,9 @@ import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './Palette.css'
 
+// --IMPORTANT!!!!-- The library style must come before our styles, else our styles
+//                   will overide the styles we want to change from the library.
+
 class Palette extends Component {
 
     constructor(props) {
@@ -22,21 +25,26 @@ class Palette extends Component {
 
     render() {
 
-        const colorBoxes = this.props.palette.colors[this.state.level].map((myColor, idx) => (
+        const { colors } = this.props.palette
+
+        const colorBoxes = colors[this.state.level].map((myColor, idx) => (
             <ColorBox boxColor={myColor} key={idx} />
         ))
 
-        console.log(this.state.level);
+        // console.log(this.state.level);
 
         return (
             <div className='Palette' >
                 {/* NavBar here */}
-                <Slider
-                    defaultValue={this.state.level}
-                    min={100}
-                    max={900}
-                    step={100}
-                    onAfterChange={this.changeLevel} />
+                <div className='slider' >
+                    <Slider
+                        defaultValue={this.state.level}
+                        min={100}
+                        max={900}
+                        step={100}
+                        onAfterChange={this.changeLevel}
+                    />
+                </div>
                 <div className='Palette-colors' >
                     {/* Our color boxes */}
                     {colorBoxes}
