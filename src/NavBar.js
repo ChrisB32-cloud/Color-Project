@@ -69,7 +69,7 @@ class NavBar extends Component {
                         onChange={this.handleChange}
                     >
                         <MenuItem value='hex'>HEX - #ffff</MenuItem>
-                        <MenuItem value='rgb'>RGD - rbg(255,255,255)</MenuItem>
+                        <MenuItem value='rgb'>RGB - rbg(255,255,255)</MenuItem>
                         <MenuItem value='rgba'>RGBA - rbga(255,255,255,0.1) </MenuItem>
                     </Select>
                 </div>
