@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
-import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './Palette.css'
 import NavBar from './NavBar';
@@ -45,7 +44,6 @@ class Palette extends Component {
             <div className='Palette' >
                 <NavBar changeLevel={this.state.level} function={this.changeLevel} handleChange={this.changeFormat} />
                 <div className='Palette-colors' >
-                    {/* Our color boxes */}
                     {colorBoxes}
                 </div>
                 {/* Footer */}
