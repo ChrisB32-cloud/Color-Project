@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -48,7 +49,7 @@ class NavBar extends Component {
         return (
             <header className='NavBar'>
                 <div className='logo'>
-                    <a href="/">React Color Picker</a>
+                    <a> <Link exact to='/'>React Color Picker</Link> </a>
                 </div>
                 <div slider-container >
                     <span>Level: {this.props.changeLevel}</span>
