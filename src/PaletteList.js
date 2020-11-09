@@ -15,10 +15,10 @@ class PaletteList extends Component {
         return (
             <div>
                 <h1>PaletteList Component</h1>
-                <MiniPalette />
                 <br />
                 {myPalettes.map((p, idx) => (
-                    <p> <Link exact to={`/palette/${p.id}`} key={idx}> {p.paletteName} </Link></p>
+                    // <p> <Link exact to={`/palette/${p.id}`} key={idx}> {p.paletteName} </Link></p>
+                    <MiniPalette {...p} />
                 ))}
             </div>
         );
