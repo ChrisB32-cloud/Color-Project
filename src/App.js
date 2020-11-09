@@ -15,7 +15,7 @@ class App extends Component {
 
   render() {
 
-    console.log(seedColors);
+    // console.log(seedColors);
 
     return (
       <Switch>
