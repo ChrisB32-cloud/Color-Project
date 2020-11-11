@@ -9,7 +9,7 @@ const styles = {
     root: {
         backgroundColor: 'blue',
         display: 'flex',
-        height: '100%',
+        height: '100vh',
         alignItmes: 'flex-start',
         justifyContent: 'center'
 
@@ -20,7 +20,7 @@ const styles = {
         alignItems: 'flex-start',
         flexDirection: 'column',
         flexWrap: 'wrap',
-        border: '1px solid white'
+        // border: '1px solid white'
     },
     nav: {
         display: 'flex',
@@ -52,7 +52,7 @@ class PaletteList extends Component {
             <div className={classes.root}>
                 <div className={classes.container}>
                     <nav className={classes.nav}>
-                        <h1>PaletteList Component</h1>
+                        <h1>React Color</h1>
                     </nav>
                     <div className={classes.palettes}>
                         {myPalettes.map((p, idx) => (
