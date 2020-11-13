@@ -86,20 +86,21 @@ class NavBar extends Component {
                             "aria-describedby": "message-id"
                         }}
                         // onClose={this.closeSnackBar}
-                        action={[
-                            // <React.Fragment>
-                            <IconButton
-                                size="small"
-                                aria-label="close"
-                                color="inherit"
-                                onClick={this.closeSnackBar}
-                                key='close'
-                                aria-label='close'
-                            >
-                                <CloseIcon fontSize="small" />
-                            </IconButton>
-                            // </React.Fragment>
-                        ]
+                        action={
+                            // [
+                            <React.Fragment>
+                                <IconButton
+                                    size="small"
+                                    aria-label="close"
+                                    color="inherit"
+                                    onClick={this.closeSnackBar}
+                                    key='close'
+                                    aria-label='close'
+                                >
+                                    <CloseIcon fontSize="small" />
+                                </IconButton>
+                            </React.Fragment>
+                            // ]
                         }
                     >
                         {/* <Alert onClose={this.handleClose} >

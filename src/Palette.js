@@ -37,7 +37,7 @@ class Palette extends Component {
         const colorBoxes = colors[level].map((myColor) => (
             <ColorBox boxColor={myColor[format]} name={myColor.name} key={myColor.id} paletteId={id} colorId={myColor.id} />
         ))
-        console.log(this.props);
+        // console.log(this.props);
 
         return (
             <div className='Palette' >
