@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { Link } from 'react-router-dom';
 import './ColorBox.css'
 
 class ColorBox extends Component {
@@ -38,7 +39,10 @@ class ColorBox extends Component {
                         </div>
                         <button className='copy-button'  >Copy</button>
                     </div>
-                    <span className='see-more' >More</span>
+                    {/* e.stopPropagation basiclly means, this is the end of the road, don't fire the event from the parent (so we won't get the css/style transtion from the parent, also won't copy the color to the clipboard) */}
+                    <Link exact to='/' onClick={e => e.stopPropagation()}>
+                        <span className='see-more' >More</span>
+                    </Link>
                 </div>
 
             </CopyToClipboard>
