@@ -49,7 +49,9 @@ class NavBar extends Component {
         return (
             <header className='NavBar'>
                 <div className='logo'>
-                    <a> <Link exact to='/'>React Color Picker</Link> </a>
+                    {/* <a> */}
+                    <Link exact to='/'>React Color Picker</Link>
+                    {/* </a> */}
                 </div>
                 {this.props.showSlider && (
                     <div slider-container >
