@@ -48,12 +48,12 @@ class SingleColorPalette extends Component {
     }
 
     render() {
-
+        const { format } = this.state
         const colorBoxes = this._shades.map(shade => (
             <ColorBox
                 key={shade.id}
                 name={shade.name}
-                boxColor={shade.hex}
+                boxColor={shade[format]}
                 showLink={false}
             />
         ))
