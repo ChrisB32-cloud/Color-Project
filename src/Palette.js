@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
+import PaletteFooter from './PaletteFooter';
 import 'rc-slider/assets/index.css';
 import './Palette.css'
 import NavBar from './NavBar';
+
 
 
 // --IMPORTANT!!!!-- The library style must come before our styles, else our styles
@@ -57,10 +59,14 @@ class Palette extends Component {
                 <div className='Palette-colors' >
                     {colorBoxes}
                 </div>
-                <footer className='Palette-footer'  >
+                {/* <footer className='Palette-footer'  >
                     {paletteName}
                     <span className='emoji'>{emoji}</span>
-                </footer>
+                </footer> */}
+                <PaletteFooter
+                    paletteNames={paletteName}
+                    emojis={emoji}
+                />
             </div>
         );
     }
