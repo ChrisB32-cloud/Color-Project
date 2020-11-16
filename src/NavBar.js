@@ -51,7 +51,7 @@ class NavBar extends Component {
                 <div className='logo'>
                     <a> <Link exact to='/'>React Color Picker</Link> </a>
                 </div>
-                {this.props.showLink && (
+                {this.props.showSlider && (
                     <div slider-container >
                         <span>Level: {this.props.myLevel}</span>
                         <div className='slider' >

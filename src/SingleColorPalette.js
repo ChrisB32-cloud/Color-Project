@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
-import { withStyles } from '@material-ui/styles';
+// import { withStyles } from '@material-ui/styles';
 import NavBar from './NavBar';
 
 
-const styles = {
-    root: {
-        backgroundColor: 'white',
-        border: '1px solid black',
-        borderRadius: '5px',
-        padding: '0.5rem',
-        position: 'relative',
-        overflow: 'hidden',
-        "&:hover": {
-            cursor: 'pointer'
-        }
-    },
-}
+
 
 
 class SingleColorPalette extends Component {
@@ -51,7 +39,7 @@ class SingleColorPalette extends Component {
         const { format } = this.state
         const colorBoxes = this._shades.map(shade => (
             <ColorBox
-                key={shade.id}
+                key={shade.name}
                 name={shade.name}
                 boxColor={shade[format]}
                 showLink={false}
@@ -62,7 +50,7 @@ class SingleColorPalette extends Component {
             <div className='Palette'>
                 <NavBar
                     handleChange={this.changeFormat}
-                    showLink={false}
+                    showSlider={false}
                 />
                 {/* <h1>Our single color palette Component</h1> */}
                 <div className='Palette-colors'>

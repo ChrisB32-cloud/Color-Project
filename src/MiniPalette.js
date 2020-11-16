@@ -60,8 +60,8 @@ const styles = {
 
 function MiniPalette(props) {
 
-    const { classes, paletteName, colors, emoji, myPaletteFunction, id } = props;
-
+    const { classes, paletteName, colors, emoji, myPaletteFunction } = props;
+    // can extract out id if we need to
 
 
     // console.log(props);

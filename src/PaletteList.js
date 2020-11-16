@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withStyles, makeStyles } from '@material-ui/styles';
+import { withStyles } from '@material-ui/styles';
 import MiniPalette from './MiniPalette';
 
 
@@ -61,7 +61,7 @@ class PaletteList extends Component {
                     </nav>
                     <div className={classes.palettes}>
                         {myPalettes.map((p, idx) => (
-                            <MiniPalette {...p} myPaletteFunction={() => this.goToPalette(p.id)} />
+                            <MiniPalette {...p} key={idx} myPaletteFunction={() => this.goToPalette(p.id)} />
                         ))}
                     </div>
                 </div>
