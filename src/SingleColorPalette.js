@@ -36,7 +36,11 @@ class SingleColorPalette extends Component {
         this.setState({ format: pass })
     }
 
+
     render() {
+
+        console.log(this.props);
+
         const { format } = this.state
         const colorBoxes = this._shades.map(shade => (
             <ColorBox
@@ -47,7 +51,7 @@ class SingleColorPalette extends Component {
             />
         ))
 
-        console.log(this.props);
+        // console.log(this.props);
 
         return (
             <div className='Palette'>
