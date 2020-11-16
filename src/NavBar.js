@@ -51,18 +51,20 @@ class NavBar extends Component {
                 <div className='logo'>
                     <a> <Link exact to='/'>React Color Picker</Link> </a>
                 </div>
-                <div slider-container >
-                    <span>Level: {this.props.myLevel}</span>
-                    <div className='slider' >
-                        <Slider
-                            defaultValue={this.props.myLevel}
-                            min={100}
-                            max={900}
-                            step={100}
-                            onAfterChange={this.props.function}
-                        />
+                {this.props.showLink && (
+                    <div slider-container >
+                        <span>Level: {this.props.myLevel}</span>
+                        <div className='slider' >
+                            <Slider
+                                defaultValue={this.props.myLevel}
+                                min={100}
+                                max={900}
+                                step={100}
+                                onAfterChange={this.props.function}
+                            />
+                        </div>
                     </div>
-                </div>
+                )}
                 <div className='select-container'>
                     <Select
                         value={this.state.format}
