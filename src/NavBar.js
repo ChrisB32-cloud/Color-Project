@@ -52,10 +52,10 @@ class NavBar extends Component {
                     <a> <Link exact to='/'>React Color Picker</Link> </a>
                 </div>
                 <div slider-container >
-                    <span>Level: {this.props.changeLevel}</span>
+                    <span>Level: {this.props.myLevel}</span>
                     <div className='slider' >
                         <Slider
-                            defaultValue={this.props.changeLevel}
+                            defaultValue={this.props.myLevel}
                             min={100}
                             max={900}
                             step={100}

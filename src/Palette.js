@@ -35,13 +35,20 @@ class Palette extends Component {
         const { level, format } = this.state
 
         const colorBoxes = colors[level].map((myColor) => (
-            <ColorBox boxColor={myColor[format]} name={myColor.name} key={myColor.id} paletteId={id} colorId={myColor.id} />
+            <ColorBox
+                boxColor={myColor[format]}
+                name={myColor.name}
+                key={myColor.id}
+                paletteId={id}
+                colorId={myColor.id}
+                showLink={true}
+            />
         ))
         // console.log(this.props);
 
         return (
             <div className='Palette' >
-                <NavBar changeLevel={this.state.level} function={this.changeLevel} handleChange={this.changeFormat} />
+                <NavBar myLevel={this.state.level} function={this.changeLevel} handleChange={this.changeFormat} />
                 <div className='Palette-colors' >
                     {colorBoxes}
                 </div>

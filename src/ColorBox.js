@@ -22,7 +22,7 @@ class ColorBox extends Component {
 
 
     render() {
-        const { name, boxColor, paletteId, colorId } = this.props
+        const { name, boxColor, paletteId, colorId, showLink } = this.props
         // console.log(this.props);
 
         return (
@@ -40,9 +40,9 @@ class ColorBox extends Component {
                         <button className='copy-button'  >Copy</button>
                     </div>
                     {/* e.stopPropagation basiclly means, this is the end of the road, don't fire the event from the parent (so we won't get the css/style transtion from the parent, also won't copy the color to the clipboard) */}
-                    <Link exact to={`/palette/${paletteId}/${colorId}`} onClick={e => e.stopPropagation()}>
+                    {showLink && (<Link exact to={`/palette/${paletteId}/${colorId}`} onClick={e => e.stopPropagation()}>
                         <span className='see-more' >More</span>
-                    </Link>
+                    </Link>)}
                 </div>
 
             </CopyToClipboard>

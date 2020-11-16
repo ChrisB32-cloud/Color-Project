@@ -1,5 +1,22 @@
 import React, { Component } from 'react';
+import ColorBox from './ColorBox';
 import { withStyles } from '@material-ui/styles';
+
+
+const styles = {
+    root: {
+        backgroundColor: 'white',
+        border: '1px solid black',
+        borderRadius: '5px',
+        padding: '0.5rem',
+        position: 'relative',
+        overflow: 'hidden',
+        "&:hover": {
+            cursor: 'pointer'
+        }
+    },
+}
+
 
 class SingleColorPalette extends Component {
 
@@ -8,34 +25,33 @@ class SingleColorPalette extends Component {
 
         this._shades = this.gatherShades(this.props.palette, this.props.colorId)
 
-        this.gatherShades = this.gatherShades.bind(this)
+        // console.log(this._shades);
     }
 
-    gatherShades(palette, colorId) {
+    gatherShades(palette, colorIdCheck) {
+        let singleRange = []
+        let allColors = palette.colors
 
-        for (let c in palette.colors) {
-            // console.log(c, palette.colors[c]);
-            let SingleRange = palette.colors[c]
-            // console.log(SingleRange);
-            SingleRange.map(newRange => {
-                // console.log(newRange);
-                if (newRange.id === colorId) {
-                    console.log(newRange.name);
-                }
-            })
+        for (let c in allColors) {
+            singleRange = singleRange.concat(
+                allColors[c].filter(color => color.id === colorIdCheck)
+            )
         }
-
+        return singleRange.slice(1)
     }
 
     render() {
 
-        const { palette, colorId } = this.props
-
-        // console.log(palette);
+        const colorBoxes = this._shades.map(shade => (
+            <ColorBox key={shade.id} name={shade.name} boxColor={shade.hex} showLink={false} />
+        ))
 
         return (
-            <div>
+            <div className='Palette'>
                 <h1>Our single color palette Component</h1>
+                <div className='Palette-colors'>
+                    {colorBoxes}
+                </div>
             </div>
         );
     }
