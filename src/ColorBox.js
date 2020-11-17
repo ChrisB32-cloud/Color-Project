@@ -24,7 +24,7 @@ class ColorBox extends Component {
 
     render() {
         const { name, boxColor, paletteId, colorId, showLink } = this.props
-        const isDarkTextColor = chroma(boxColor).luminance() <= 0.05 ? 'white' : 'black';
+        const isDarkTextColor = chroma(boxColor).luminance() <= 0.08 ? 'white' : 'rgba(0,0,0,0.7)';
 
         return (
             <CopyToClipboard text={`${boxColor}`} onCopy={this.changeCopyState} >
@@ -32,7 +32,7 @@ class ColorBox extends Component {
                     <div style={{ backgroundColor: `${boxColor}` }} className={`copy-overlay ${this.state.copied && "show"}`} />
                     <div className={`copy-msg ${this.state.copied && 'show'}`} >
                         <h1>Copied!</h1>
-                        <p>{boxColor}</p>
+                        <p style={{ color: isDarkTextColor }} >{boxColor}</p>
                     </div>
                     <div className='copy-container' >
                         <div className='box-content' >
