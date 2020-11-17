@@ -43,7 +43,7 @@ class Palette extends Component {
                 key={myColor.id}
                 paletteId={id}
                 colorId={myColor.id}
-                showLink={true}
+                showingFullPalette={true}
             />
         ))
         // console.log(this.props);

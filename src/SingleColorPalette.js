@@ -48,7 +48,7 @@ class SingleColorPalette extends Component {
                 key={shade.name}
                 name={shade.name}
                 boxColor={shade[format]}
-                showLink={false}
+                showingFullPalette={false}
             />
         ))
 
@@ -63,7 +63,10 @@ class SingleColorPalette extends Component {
                 {/* <h1>Our single color palette Component</h1> */}
                 <div className='Palette-colors'>
                     {colorBoxes}
-                    <div className='go-back ColorBox'> <Link exact to={`/palette/${this.props.palette.id}`} className='back-button'>Go Back</Link> </div>
+                    <div className='go-back ColorBox'>
+                        <Link exact to={`/palette/${this.props.palette.id}`} className='back-button'>Go Back
+                        </Link>
+                    </div>
                 </div>
                 <PaletteFooter
                     paletteNames={this.props.palette.paletteName}
