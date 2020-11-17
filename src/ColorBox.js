@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import chroma from 'chroma-js';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Link } from 'react-router-dom';
 import './ColorBox.css'
@@ -23,7 +24,7 @@ class ColorBox extends Component {
 
     render() {
         const { name, boxColor, paletteId, colorId, showLink } = this.props
-        // console.log(this.props);
+        const isDarkTextColor = chroma(boxColor).luminance() <= 0.05 ? 'white' : 'black';
 
         return (
             <CopyToClipboard text={`${boxColor}`} onCopy={this.changeCopyState} >
@@ -35,13 +36,13 @@ class ColorBox extends Component {
                     </div>
                     <div className='copy-container' >
                         <div className='box-content' >
-                            <span>{name}</span>
+                            <span style={{ color: isDarkTextColor }}>{name}</span>
                         </div>
-                        <button className='copy-button'  >Copy</button>
+                        <button className='copy-button' style={{ color: isDarkTextColor }} >Copy</button>
                     </div>
                     {/* e.stopPropagation basiclly means, this is the end of the road, don't fire the event from the parent (so we won't get the css/style transtion from the parent, also won't copy the color to the clipboard) */}
                     {showLink && (<Link exact to={`/palette/${paletteId}/${colorId}`} onClick={e => e.stopPropagation()}>
-                        <span className='see-more' >More</span>
+                        <span className='see-more' style={{ color: isDarkTextColor }}>More</span>
                     </Link>)}
                 </div>
 
