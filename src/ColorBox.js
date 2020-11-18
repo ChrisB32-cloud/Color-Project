@@ -111,6 +111,7 @@ const styles = {
         "& p": {
             fontSize: '2rem',
             fontWeight: '100',
+            color: props => chroma(props.boxColor).luminance() >= 0.07 ? 'rgba(0,0,0,0.6)' : 'white',
         }
     },
     showCopyMsg: {
@@ -150,7 +151,7 @@ class ColorBox extends Component {
                     <div style={{ backgroundColor: `${boxColor}` }} className={`${classes.copyOverlay} ${this.state.copied && classes.showOverlay}`} />
                     <div className={`${classes.copyMsg} ${this.state.copied && classes.showCopyMsg}`} >
                         <h1 >Copied!</h1>
-                        <p   >{boxColor}</p>
+                        <p>{boxColor}</p>
                     </div>
                     <div  >
                         <div className={classes.boxContent} >

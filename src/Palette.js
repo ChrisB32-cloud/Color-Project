@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
+import NavBar from './NavBar';
 import ColorBox from './ColorBox';
 import PaletteFooter from './PaletteFooter';
+import { withStyles } from '@material-ui/styles';
 import 'rc-slider/assets/index.css';
 import './Palette.css'
-import NavBar from './NavBar';
+
 
 
 
 // --IMPORTANT!!!!-- The library style must come before our styles, else our styles
 //                   will overide the styles we want to change from the library.
+
+
+const styles = {
+    Palette: {
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    PaletteColors: {
+        height: '90%'
+    }
+}
+
+
 
 class Palette extends Component {
 
@@ -33,6 +49,8 @@ class Palette extends Component {
 
     render() {
 
+        const { classes } = this.props
+
         const { colors, paletteName, emoji, id } = this.props.palette
         const { level, format } = this.state
 
@@ -49,20 +67,16 @@ class Palette extends Component {
         // console.log(this.props);
 
         return (
-            <div className='Palette' >
+            <div className={classes.Palette} >
                 <NavBar
                     myLevel={this.state.level}
                     function={this.changeLevel}
                     handleChange={this.changeFormat}
                     showSlider={true}
                 />
-                <div className='Palette-colors' >
+                <div className={classes.PaletteColors} >
                     {colorBoxes}
                 </div>
-                {/* <footer className='Palette-footer'  >
-                    {paletteName}
-                    <span className='emoji'>{emoji}</span>
-                </footer> */}
                 <PaletteFooter
                     paletteNames={paletteName}
                     emojis={emoji}
@@ -72,4 +86,4 @@ class Palette extends Component {
     }
 }
 
-export default Palette;
+export default withStyles(styles)(Palette);
