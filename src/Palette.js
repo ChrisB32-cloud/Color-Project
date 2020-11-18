@@ -2,28 +2,14 @@ import React, { Component } from 'react';
 import NavBar from './NavBar';
 import ColorBox from './ColorBox';
 import PaletteFooter from './PaletteFooter';
+import styles from './styles/PaletteStyles';
 import { withStyles } from '@material-ui/styles';
 import 'rc-slider/assets/index.css';
-import './Palette.css'
-
 
 
 
 // --IMPORTANT!!!!-- The library style must come before our styles, else our styles
 //                   will overide the styles we want to change from the library.
-
-
-const styles = {
-    Palette: {
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    PaletteColors: {
-        height: '90%'
-    }
-}
-
 
 
 class Palette extends Component {
@@ -64,8 +50,6 @@ class Palette extends Component {
                 showingFullPalette={true}
             />
         ))
-        // console.log(this.props);
-
         return (
             <div className={classes.Palette} >
                 <NavBar

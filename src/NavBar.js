@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import styles from './styles/NavBarStyles';
+import { withStyles } from '@material-ui/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -7,7 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import './NavBar.css'
+
+
 
 class NavBar extends Component {
 
@@ -32,7 +35,6 @@ class NavBar extends Component {
     }
 
     handleClose(event, reason) {
-        // this.setState({ snacks: false })
         if (reason === 'clickaway') {
             return
         }
@@ -44,19 +46,19 @@ class NavBar extends Component {
     }
 
     render() {
-
+        const { classes } = this.props
         // console.log(this.state.format);
         return (
-            <header className='NavBar'>
-                <div className='logo'>
+            <header className={classes.NavBar}>
+                <div className={classes.logo}>
                     {/* <a> */}
                     <Link exact to='/'>React Color Picker</Link>
                     {/* </a> */}
                 </div>
                 {this.props.showSlider && (
-                    <div slider-container >
+                    <div>
                         <span>Level: {this.props.myLevel}</span>
-                        <div className='slider' >
+                        <div className={classes.slider} >
                             <Slider
                                 defaultValue={this.props.myLevel}
                                 min={100}
@@ -67,7 +69,7 @@ class NavBar extends Component {
                         </div>
                     </div>
                 )}
-                <div className='select-container'>
+                <div className={classes.selectContainer}>
                     <Select
                         value={this.state.format}
                         onChange={this.handleChange}
@@ -118,4 +120,4 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar;
+export default withStyles(styles)(NavBar);
