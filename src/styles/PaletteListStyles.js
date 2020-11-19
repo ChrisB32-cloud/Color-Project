@@ -21,6 +21,11 @@ export default {
         justifyContent: 'space-between',
         color: 'white'
     },
+    createLink: {
+        // textDecoration: 'none',
+        color: 'white',
+
+    },
     palettes: {
         boxSizing: 'border-box',
         width: '100%',
