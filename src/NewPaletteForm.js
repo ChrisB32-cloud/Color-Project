@@ -156,7 +156,7 @@ function NewPaletteForm() {
                     onChangeComplete={updateColor}
                 />
                 <TextField id="filled-basic" label="Color Name" variant="filled" />
-                <Button variant="contained" style={{ backgroundColor: selectColor.currentColor }}>
+                <Button variant="contained" color='primary' style={{ backgroundColor: selectColor.currentColor }}>
                     Add Color
                 </Button>
             </Drawer>
