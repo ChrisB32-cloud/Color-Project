@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -80,7 +80,7 @@ function NewPaletteForm() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     // const [formatSel, setFormatSel] = useState({ formatSel: "hex" })
-    // const [selectColor, setSelectColor] = useState({ selectColor: null })
+    const [selectColor, setSelectColor] = useState({ currentColor: 'teal' })
 
 
     const handleDrawerOpen = () => {
@@ -91,26 +91,15 @@ function NewPaletteForm() {
         setOpen(false);
     };
 
-    // const handleColorChange = (color, e) => {
-    //     setSelectColor({
-    //         selectColor: {
-    //             hex: color.hex,
-    //             rgb: {
-    //                 r: color.rgb.r,
-    //                 g: color.rgb.g,
-    //                 b: color.rgb.b,
-    //             },
-    //             rgba: {
-    //                 r: color.rgb.r,
-    //                 g: color.rgb.g,
-    //                 b: color.rgb.b,
-    //                 a: color.rgb.a
-    //             }
-    //         }
-    //     })
-    // }
 
-    // console.log(selectColor);
+
+    const updateColor = (newColor) => {
+        // console.log(newColor.hex);
+        setSelectColor({ currentColor: newColor.hex })
+    }
+
+
+    console.log(selectColor);
     // console.log(formatSel);
 
     return (
@@ -161,17 +150,13 @@ function NewPaletteForm() {
                         Randon Color
                     </Button>
                 </div>
-                {/* <ChromePicker */}
-                {/* // color={selectColor}
-                        // onChangeComplete={handleColorChange}
-                    // onClick={handleColorChange}
-                    // /> */}
                 <ChromePicker
-                    color='purple'
-                    onChangeComplete={(newColor) => console.log(newColor)}
+                    color={selectColor.currentColor}
+                    // onChangeComplete={(newColor) => updateColor(newColor)}
+                    onChangeComplete={updateColor}
                 />
                 <TextField id="filled-basic" label="Color Name" variant="filled" />
-                <Button variant="contained" color="primary">
+                <Button variant="contained" style={{ backgroundColor: selectColor.currentColor }}>
                     Add Color
                 </Button>
             </Drawer>
@@ -187,3 +172,26 @@ function NewPaletteForm() {
 }
 
 export default NewPaletteForm
+
+
+
+
+
+// const handleColorChange = (color, e) => {
+    //     setSelectColor({
+    //         selectColor: {
+    //             hex: color.hex,
+    //             rgb: {
+    //                 r: color.rgb.r,
+    //                 g: color.rgb.g,
+    //                 b: color.rgb.b,
+    //             },
+    //             rgba: {
+    //                 r: color.rgb.r,
+    //                 g: color.rgb.g,
+    //                 b: color.rgb.b,
+    //                 a: color.rgb.a
+    //             }
+    //         }
+    //     })
+    // }
