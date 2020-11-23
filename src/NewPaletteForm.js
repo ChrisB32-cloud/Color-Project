@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import Drawer from '@material-ui/core/Drawer';
@@ -78,7 +79,9 @@ function NewPaletteForm() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    const [selectColor, setSelectColor] = useState({ selectColor: '#976F59' })
+    // const [formatSel, setFormatSel] = useState({ formatSel: "hex" })
+    // const [selectColor, setSelectColor] = useState({ selectColor: null })
+
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -88,11 +91,27 @@ function NewPaletteForm() {
         setOpen(false);
     };
 
-    const handleColorChange = (color, e) => {
-        setSelectColor({ setSelectColor: color.hex })
-    }
+    // const handleColorChange = (color, e) => {
+    //     setSelectColor({
+    //         selectColor: {
+    //             hex: color.hex,
+    //             rgb: {
+    //                 r: color.rgb.r,
+    //                 g: color.rgb.g,
+    //                 b: color.rgb.b,
+    //             },
+    //             rgba: {
+    //                 r: color.rgb.r,
+    //                 g: color.rgb.g,
+    //                 b: color.rgb.b,
+    //                 a: color.rgb.a
+    //             }
+    //         }
+    //     })
+    // }
 
-    console.log(selectColor);
+    // console.log(selectColor);
+    // console.log(formatSel);
 
     return (
         <div className={classes.root}>
@@ -133,21 +152,28 @@ function NewPaletteForm() {
                     </IconButton>
                 </div>
                 <Divider />
+                <Typography variant="h4" >Design Your Palette</Typography>
                 <div>
-                    <h2>Design Your Palette</h2>
-                    <div>
-                        <Button variant="contained" color="secondary">
-                            Clear Palette
-                        </Button>
-                        <Button variant="contained" color="primary">
-                            Randon Color
-                        </Button>
-                    </div>
-                    <ChromePicker
-                        color={selectColor}
-                        onChangeComplete={handleColorChange}
-                    />
+                    <Button variant="contained" color="secondary">
+                        Clear Palette
+                    </Button>
+                    <Button variant="contained" color="primary">
+                        Randon Color
+                    </Button>
                 </div>
+                {/* <ChromePicker */}
+                {/* // color={selectColor}
+                        // onChangeComplete={handleColorChange}
+                    // onClick={handleColorChange}
+                    // /> */}
+                <ChromePicker
+                    color='purple'
+                    onChangeComplete={(newColor) => console.log(newColor)}
+                />
+                <TextField id="filled-basic" label="Color Name" variant="filled" />
+                <Button variant="contained" color="primary">
+                    Add Color
+                </Button>
             </Drawer>
             <main
                 className={clsx(classes.content, {
