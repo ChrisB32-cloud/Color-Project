@@ -71,6 +71,16 @@ const useStyles = makeStyles((theme) => ({
         }),
         marginLeft: 0,
     },
+    parentBoxContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        padding: '20px'
+    },
+    showingNewBoxes: {
+        width: '250px',
+        height: '250px'
+    }
 }));
 
 
@@ -79,8 +89,9 @@ function NewPaletteForm() {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
-    // const [formatSel, setFormatSel] = useState({ formatSel: "hex" })
     const [selectColor, setSelectColor] = useState({ currentColor: 'teal' })
+    const [addedNewColor, setAddedNewColor] = useState(['purple', 'black'])
+    const [name, setName] = useState({ name: '' })
 
 
     const handleDrawerOpen = () => {
@@ -94,13 +105,20 @@ function NewPaletteForm() {
 
 
     const updateColor = (newColor) => {
-        // console.log(newColor.hex);
         setSelectColor({ currentColor: newColor.hex })
     }
 
+    const addColorName = (e) => {
+        setName({ [e.target.name]: e.target.value })
+    }
 
-    console.log(selectColor);
-    // console.log(formatSel);
+    const addColorBoxes = () => {
+        setAddedNewColor([...addedNewColor, selectColor.currentColor])
+    }
+
+    // console.log(name);
+    console.log(addedNewColor);
+    // console.log(selectColor.currentColor);
 
     return (
         <div className={classes.root}>
@@ -152,11 +170,10 @@ function NewPaletteForm() {
                 </div>
                 <ChromePicker
                     color={selectColor.currentColor}
-                    // onChangeComplete={(newColor) => updateColor(newColor)}
                     onChangeComplete={updateColor}
                 />
-                <TextField id="filled-basic" label="Color Name" variant="filled" />
-                <Button variant="contained" color='primary' style={{ backgroundColor: selectColor.currentColor }}>
+                <TextField id="filled-basic" name='name' label="Color Name" variant="filled" onChange={addColorName} />
+                <Button variant="contained" color='primary' style={{ backgroundColor: selectColor.currentColor }} onClick={addColorBoxes}>
                     Add Color
                 </Button>
             </Drawer>
@@ -166,6 +183,11 @@ function NewPaletteForm() {
                 })}
             >
                 <div className={classes.drawerHeader} />
+                <div className={classes.parentBoxContainer}>
+                    {addedNewColor.map(c => (
+                        <div className={classes.showingNewBoxes} style={{ backgroundColor: c }}></div>
+                    ))}
+                </div>
             </main>
         </div>
     );
