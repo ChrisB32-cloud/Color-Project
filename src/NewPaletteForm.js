@@ -13,6 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import DraggableColorBox from './DraggableColorBox';
 
 const drawerWidth = 400;
 
@@ -57,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         flexGrow: 1,
+        height: 'calc(100vh - 64px)',
         padding: theme.spacing(3),
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.sharp,
@@ -77,10 +79,8 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         padding: '20px'
     },
-    showingNewBoxes: {
-        width: '250px',
-        height: '250px'
-    }
+
+
 }));
 
 
@@ -183,11 +183,11 @@ function NewPaletteForm() {
                 })}
             >
                 <div className={classes.drawerHeader} />
-                <div className={classes.parentBoxContainer}>
-                    {addedNewColor.map(c => (
-                        <div className={classes.showingNewBoxes} style={{ backgroundColor: c }}></div>
-                    ))}
-                </div>
+                {/* <div className={classes.parentBoxContainer}> */}
+                {addedNewColor.map(c => (
+                    <DraggableColorBox color={c} />
+                ))}
+                {/* </div> */}
             </main>
         </div>
     );
