@@ -14,6 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DraggableColorBox from './DraggableColorBox';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 const drawerWidth = 400;
 
@@ -172,8 +173,18 @@ function NewPaletteForm() {
                     color={selectColor.currentColor}
                     onChangeComplete={updateColor}
                 />
-                <TextField id="filled-basic" name='name' label="Color Name" variant="filled" onChange={addColorName} />
-                <Button variant="contained" color='primary' style={{ backgroundColor: selectColor.currentColor }} onClick={addColorBoxes}>
+                {/* <TextField id="filled-basic" name='name' label="Color Name" variant="filled" onChange={addColorName} /> */}
+                <ValidatorForm onSubmit={addColorBoxes}>
+                    <TextValidator
+                        label="Color Name"
+                        onChange={addColorName}
+                        name="name"
+                        value={name.name}
+                        validators={['required', 'isEmail']}
+                        errorMessages={['this field is required', 'already have name']}
+                    />
+                </ValidatorForm>
+                <Button variant="contained" color='primary' style={{ backgroundColor: selectColor.currentColor }} type='submit'>
                     Add Color
                 </Button>
             </Drawer>
@@ -185,7 +196,7 @@ function NewPaletteForm() {
                 <div className={classes.drawerHeader} />
                 {/* <div className={classes.parentBoxContainer}> */}
                 {addedNewColor.map(c => (
-                    <DraggableColorBox color={c} />
+                    <DraggableColorBox color={c} nameColor={name.name} />
                 ))}
                 {/* </div> */}
             </main>
