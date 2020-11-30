@@ -115,10 +115,7 @@ function NewPaletteForm() {
     }
 
     const addColorBoxes = () => {
-        setAddedNewColor(
-            [
-                ...addedNewColor, { color: selectColor.currentColor, colorName: name.name },
-            ]
+        setAddedNewColor([...addedNewColor, { color: selectColor.currentColor, colorName: name.name }]
         )
     }
     // const addColorBoxes = () => {
