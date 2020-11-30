@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DraggableColorBox from './DraggableColorBox';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { statement } from '@babel/template';
 
 const drawerWidth = 400;
 
@@ -91,8 +92,8 @@ function NewPaletteForm() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [selectColor, setSelectColor] = useState({ currentColor: 'teal' })
-    const [addedNewColor, setAddedNewColor] = useState(['purple', 'black'])
-    const [name, setName] = useState({ name: '' })
+    const [addedNewColor, setAddedNewColor] = useState([{ color: 'purple', colorName: 'purple' }])
+    const [name, setName] = useState('')
 
 
     const handleDrawerOpen = () => {
@@ -114,10 +115,17 @@ function NewPaletteForm() {
     }
 
     const addColorBoxes = () => {
-        setAddedNewColor([...addedNewColor, selectColor.currentColor])
+        setAddedNewColor(
+            [
+                ...addedNewColor, { color: selectColor.currentColor, colorName: name.name },
+            ]
+        )
     }
+    // const addColorBoxes = () => {
+    //     setAddedNewColor([...addedNewColor, selectColor.currentColor])
+    // }
 
-    // console.log(name);
+    // console.log(name.name);
     console.log(addedNewColor);
     // console.log(selectColor.currentColor);
 
@@ -180,11 +188,11 @@ function NewPaletteForm() {
                         onChange={addColorName}
                         name="name"
                         value={name.name}
-                        validators={['required', 'isEmail']}
-                        errorMessages={['this field is required', 'already have name']}
+                    // validators={['required', 'isEmail']}
+                    // errorMessages={['this field is required', 'already have name']}
                     />
                 </ValidatorForm>
-                <Button variant="contained" color='primary' style={{ backgroundColor: selectColor.currentColor }} type='submit'>
+                <Button variant="contained" color='primary' style={{ backgroundColor: selectColor.currentColor }} onClick={addColorBoxes} type='submit'>
                     Add Color
                 </Button>
             </Drawer>
@@ -196,7 +204,7 @@ function NewPaletteForm() {
                 <div className={classes.drawerHeader} />
                 {/* <div className={classes.parentBoxContainer}> */}
                 {addedNewColor.map(c => (
-                    <DraggableColorBox color={c} nameColor={name.name} />
+                    <DraggableColorBox color={c.color} theName={c.colorName} />
                 ))}
                 {/* </div> */}
             </main>
@@ -210,21 +218,3 @@ export default NewPaletteForm
 
 
 
-// const handleColorChange = (color, e) => {
-    //     setSelectColor({
-    //         selectColor: {
-    //             hex: color.hex,
-    //             rgb: {
-    //                 r: color.rgb.r,
-    //                 g: color.rgb.g,
-    //                 b: color.rgb.b,
-    //             },
-    //             rgba: {
-    //                 r: color.rgb.r,
-    //                 g: color.rgb.g,
-    //                 b: color.rgb.b,
-    //                 a: color.rgb.a
-    //             }
-    //         }
-    //     })
-    // }
