@@ -188,10 +188,16 @@ function NewPaletteForm() {
                     // validators={['required', 'isEmail']}
                     // errorMessages={['this field is required', 'already have name']}
                     />
-                </ValidatorForm>
-                <Button variant="contained" color='primary' style={{ backgroundColor: selectColor.currentColor }} onClick={addColorBoxes} type='submit'>
-                    Add Color
+                    <Button
+                        variant="contained"
+                        type='submit'
+                        color='primary'
+                        style={{ backgroundColor: selectColor.currentColor }}
+                    // onClick={addColorBoxes}
+                    >
+                        Add Color
                 </Button>
+                </ValidatorForm>
             </Drawer>
             <main
                 className={clsx(classes.content, {
