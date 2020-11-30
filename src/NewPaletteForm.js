@@ -117,16 +117,22 @@ function NewPaletteForm() {
     const addColorBoxes = () => {
         setAddedNewColor([...addedNewColor, { color: selectColor.currentColor, colorName: name.name }]
         )
+        setSelectColor({ currentColor: 'teal' })
+        setName({ name: '' })
     }
 
     useEffect(() => {
         // custom rule will have name 'isPasswordMatch'
-        ValidatorForm.addValidationRule('colorAlreadyExist', (value) =>
+        ValidatorForm.addValidationRule('colorNameAlreadyExist', (value) =>
             // addedNewColor.map(newC => newC.colorName.toLowerCase() !== value.toLowerCase() ? true : false)
             addedNewColor.every(newC => newC.colorName.toLowerCase() !== value.toLowerCase())
         );
 
-        // ValidatorForm.removeValidationRule('colorAlreadyExist');
+        ValidatorForm.addValidationRule('colorAlreadyExist', (value) =>
+            addedNewColor.every(newC => newC.color !== selectColor.currentColor)
+        );
+
+
     });
 
     // useEffect(() => {
@@ -136,7 +142,7 @@ function NewPaletteForm() {
     //     setAddedNewColor([...addedNewColor, selectColor.currentColor])
     // }
 
-    // console.log(name.name);
+    console.log(name);
     // console.log(addedNewColor);
     // console.log(selectColor.currentColor);
 
@@ -199,8 +205,8 @@ function NewPaletteForm() {
                         onChange={addColorName}
                         name="name"
                         value={name.name}
-                        validators={['colorAlreadyExist', 'required']}
-                        errorMessages={['this field is required', 'already have name']}
+                        validators={['required', 'colorNameAlreadyExist', 'colorAlreadyExist']}
+                        errorMessages={['Enter Color Name', 'Already have name', 'Already have Color']}
                     />
                     <Button
                         variant="contained"
