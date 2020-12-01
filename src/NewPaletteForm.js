@@ -87,13 +87,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function NewPaletteForm() {
+function NewPaletteForm(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [selectColor, setSelectColor] = useState({ currentColor: 'teal' })
-    const [addedNewColor, setAddedNewColor] = useState([{ color: 'purple', colorName: 'purple' }])
-    const [name, setName] = useState('')
+    const [addedNewColor, setAddedNewColor] = useState([{ color: 'purple', name: 'purple' }])
+    const [name, setColorName] = useState('')
 
 
     const handleDrawerOpen = () => {
@@ -111,21 +111,21 @@ function NewPaletteForm() {
     }
 
     const addColorName = (e) => {
-        setName({ [e.target.name]: e.target.value })
+        setColorName({ [e.target.name]: e.target.value })
     }
 
     const addColorBoxes = () => {
-        setAddedNewColor([...addedNewColor, { color: selectColor.currentColor, colorName: name.name }]
+        setAddedNewColor([...addedNewColor, { color: selectColor.currentColor, name: name.name }]
         )
         setSelectColor({ currentColor: 'teal' })
-        setName({ name: '' })
+        setColorName({ name: '' })
     }
 
     useEffect(() => {
         // custom rule will have name 'isPasswordMatch'
         ValidatorForm.addValidationRule('colorNameAlreadyExist', (value) =>
             // addedNewColor.map(newC => newC.colorName.toLowerCase() !== value.toLowerCase() ? true : false)
-            addedNewColor.every(newC => newC.colorName.toLowerCase() !== value.toLowerCase())
+            addedNewColor.every(newC => newC.name.toLowerCase() !== value.toLowerCase())
         );
 
         ValidatorForm.addValidationRule('colorAlreadyExist', (value) =>
@@ -135,22 +135,25 @@ function NewPaletteForm() {
 
     });
 
+
+    const savePalette = () => {
+        props.handleSave(addedNewColor)
+        // console.log(props);
+    }
+
+
     // useEffect(() => {
     //     ValidatorForm.removeValidationRule('colorAlreadyExist');
     // })
-    // const addColorBoxes = () => {
-    //     setAddedNewColor([...addedNewColor, selectColor.currentColor])
-    // }
 
-    console.log(name);
-    // console.log(addedNewColor);
-    // console.log(selectColor.currentColor);
+    // console.log(name);
 
     return (
         <div className={classes.root}>
             <CssBaseline />
             <AppBar
                 position="fixed"
+                color='default'
                 className={clsx(classes.appBar, {
                     [classes.appBarShift]: open,
                 })}
@@ -167,7 +170,13 @@ function NewPaletteForm() {
                     </IconButton>
                     <Typography variant="h6" noWrap>
                         Create Color Palette
-          </Typography>
+                    </Typography>
+                    <Button variant="contained" color="secondary">
+                        Go Back
+                    </Button>
+                    <Button variant="contained" color="primary" onClick={savePalette} >
+                        Save Palette
+                    </Button>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -198,7 +207,6 @@ function NewPaletteForm() {
                     color={selectColor.currentColor}
                     onChangeComplete={updateColor}
                 />
-                {/* <TextField id="filled-basic" name='name' label="Color Name" variant="filled" onChange={addColorName} /> */}
                 <ValidatorForm onSubmit={addColorBoxes}>
                     <TextValidator
                         label="Color Name"
@@ -213,7 +221,6 @@ function NewPaletteForm() {
                         type='submit'
                         color='primary'
                         style={{ backgroundColor: selectColor.currentColor }}
-                    // onClick={addColorBoxes}
                     >
                         Add Color
                 </Button>
@@ -227,7 +234,7 @@ function NewPaletteForm() {
                 <div className={classes.drawerHeader} />
                 {/* <div className={classes.parentBoxContainer}> */}
                 {addedNewColor.map(c => (
-                    <DraggableColorBox color={c.color} theName={c.colorName} />
+                    <DraggableColorBox color={c.color} theName={c.name} />
                 ))}
                 {/* </div> */}
             </main>

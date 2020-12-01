@@ -9,10 +9,21 @@ import NewPaletteForm from './NewPaletteForm';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.handleSave = this.handleSave.bind(this)
+
+  }
+
   findPalette(id) {
     return seedColors.find(function (palette) {
       return palette.id === id;
     });
+  }
+
+  handleSave(passedColorPalette) {
+    console.log(passedColorPalette);
   }
 
   render() {
@@ -25,7 +36,7 @@ class App extends Component {
           exact
           path='/palette/newpalette'
           render={(routeProps) =>
-            <NewPaletteForm {...routeProps} />}
+            <NewPaletteForm {...routeProps} handleSave={this.handleSave} />}
         />
         <Route
           exact
