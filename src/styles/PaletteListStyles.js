@@ -9,10 +9,12 @@ export default {
     },
     container: {
         width: '50%',
+        // height: '100vh',
         display: 'flex',
         alignItems: 'flex-start',
         flexDirection: 'column',
-        flexWrap: 'wrap',
+        // flexWrap: 'wrap',
+        // overflow: 'scroll'
         // border: '1px solid white'
     },
     nav: {

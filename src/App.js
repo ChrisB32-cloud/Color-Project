@@ -12,23 +12,32 @@ class App extends Component {
   constructor(props) {
     super(props)
 
+    this.state = { palettes: seedColors }
+
     this.handleSave = this.handleSave.bind(this)
+    this.findPalette = this.findPalette.bind(this)
 
   }
 
   findPalette(id) {
-    return seedColors.find(function (palette) {
+    return this.state.palettes.find(function (palette) {
       return palette.id === id;
     });
   }
 
   handleSave(passedColorPalette) {
+
+    console.log(this.state.palettes)
     console.log(passedColorPalette);
+
+    this.setState({ palettes: [...this.state.palettes, passedColorPalette] })
+
+
   }
 
   render() {
 
-    // console.log(seedColors);
+    // console.log(this.state.palettes);
 
     return (
       <Switch>
@@ -54,7 +63,7 @@ class App extends Component {
           exact
           path='/'
           render={(routeProps) =>
-            <PaletteList {...routeProps} myPalettes={seedColors} key={1.2} />}
+            <PaletteList {...routeProps} myPalettes={this.state.palettes} key={1.2} />}
         />
         <Route
           exact
