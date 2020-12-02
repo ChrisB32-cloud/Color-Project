@@ -94,6 +94,7 @@ function NewPaletteForm(props) {
     const [selectColor, setSelectColor] = useState({ currentColor: 'teal' })
     const [addedNewColor, setAddedNewColor] = useState([{ color: 'purple', name: 'purple' }])
     const [name, setColorName] = useState('')
+    const [newPaletteName, setNewPaletteName] = useState('')
 
 
     const handleDrawerOpen = () => {
@@ -149,12 +150,10 @@ function NewPaletteForm(props) {
         props.history.push('/')
     }
 
+    const handleNewPaletteName = (e) => {
+        //
+    }
 
-    // useEffect(() => {
-    //     ValidatorForm.removeValidationRule('colorAlreadyExist');
-    // })
-
-    // console.log(name);
 
     return (
         <div className={classes.root}>
@@ -179,12 +178,15 @@ function NewPaletteForm(props) {
                     <Typography variant="h6" noWrap>
                         Create Color Palette
                     </Typography>
-                    <Button variant="contained" color="secondary">
-                        Go Back
-                    </Button>
-                    <Button variant="contained" color="primary" onClick={savePalette} >
-                        Save Palette
-                    </Button>
+                    <ValidatorForm onSubmit={savePalette}>
+                        <TextValidator label='Palette Name' name='newPaletteName' value={newPaletteName} onChange={handleNewPaletteName} />
+                        {/* <Button variant="contained" color="secondary">
+                            Go Back
+                        </Button> */}
+                        <Button variant="contained" color="primary" type='submit' >
+                            Save Palette
+                        </Button>
+                    </ValidatorForm>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -231,7 +233,7 @@ function NewPaletteForm(props) {
                         style={{ backgroundColor: selectColor.currentColor }}
                     >
                         Add Color
-                </Button>
+                    </Button>
                 </ValidatorForm>
             </Drawer>
             <main
