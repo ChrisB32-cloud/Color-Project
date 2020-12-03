@@ -268,6 +268,7 @@ function NewPaletteForm(props) {
           <DraggableColorBox
             color={c.color}
             theName={c.name}
+            key={c.name}
             handleDelete={handleDelete}
           />
         ))}
