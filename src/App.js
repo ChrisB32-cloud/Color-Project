@@ -27,8 +27,8 @@ class App extends Component {
 
   handleSave(passedColorPalette) {
 
-    console.log(this.state.palettes)
-    console.log(passedColorPalette);
+    // console.log(this.state.palettes)
+    // console.log(passedColorPalette);
 
     this.setState({ palettes: [...this.state.palettes, passedColorPalette] })
 
@@ -45,7 +45,7 @@ class App extends Component {
           exact
           path='/palette/newpalette'
           render={(routeProps) =>
-            <NewPaletteForm {...routeProps} handleSave={this.handleSave} />}
+            <NewPaletteForm {...routeProps} palettes={this.state.palettes} handleSave={this.handleSave} />}
         />
         <Route
           exact

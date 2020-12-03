@@ -122,6 +122,24 @@ function NewPaletteForm(props) {
         setColorName({ name: '' })
     }
 
+
+    const savePalette = () => {
+        let newName = newPaletteName
+
+        const newColorsPassed = {
+            paletteName: newName,
+            id: newName.replace(/ /g, '-').toLowerCase(),
+            emoji: 'em',
+            colors: [...addedNewColor]
+        }
+        props.handleSave(newColorsPassed)
+        props.history.push('/')
+    }
+
+    const handleNewPaletteName = (e) => {
+        setNewPaletteName(e.target.value)
+    }
+
     useEffect(() => {
         // custom rule will have name 'isPasswordMatch'
         ValidatorForm.addValidationRule('colorNameAlreadyExist', (value) =>
@@ -133,27 +151,14 @@ function NewPaletteForm(props) {
             addedNewColor.every(newC => newC.color !== selectColor.currentColor)
         );
 
+        ValidatorForm.addValidationRule('paletteAlreadyExist', (value) => props.palettes.every(p => p.paletteName.toLowerCase() !== value.toLowerCase()));
+
 
     });
 
 
-    const savePalette = () => {
-        let newName = 'New Test Palette'
 
-        const newColorsPassed = {
-            paletteName: newName,
-            id: newName.replace(/ /g, '-').toLowerCase(),
-            emoji: 'smiley face',
-            colors: [...addedNewColor]
-        }
-        props.handleSave(newColorsPassed)
-        props.history.push('/')
-    }
-
-    const handleNewPaletteName = (e) => {
-        //
-    }
-
+    // console.log(props.palettes);
 
     return (
         <div className={classes.root}>
@@ -179,7 +184,14 @@ function NewPaletteForm(props) {
                         Create Color Palette
                     </Typography>
                     <ValidatorForm onSubmit={savePalette}>
-                        <TextValidator label='Palette Name' name='newPaletteName' value={newPaletteName} onChange={handleNewPaletteName} />
+                        <TextValidator
+                            label='Palette Name'
+                            name='newPaletteName'
+                            value={newPaletteName}
+                            onChange={handleNewPaletteName}
+                            validators={['required', 'paletteAlreadyExist']}
+                            errorMessages={['Enter Palette Name', 'Palette Already Exist']}
+                        />
                         {/* <Button variant="contained" color="secondary">
                             Go Back
                         </Button> */}

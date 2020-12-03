@@ -2,7 +2,7 @@ export default {
     root: {
         backgroundColor: 'blue',
         display: 'flex',
-        height: '100vh',
+        height: '150vh',
         alignItmes: 'flex-start',
         justifyContent: 'center'
 
@@ -13,7 +13,7 @@ export default {
         display: 'flex',
         alignItems: 'flex-start',
         flexDirection: 'column',
-        // flexWrap: 'wrap',
+        flexWrap: 'wrap',
         // overflow: 'scroll'
         // border: '1px solid white'
     },
