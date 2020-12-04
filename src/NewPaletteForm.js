@@ -13,7 +13,8 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
+import arrayMove from 'array-move';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 const drawerWidth = 400;
@@ -162,6 +163,13 @@ function NewPaletteForm(props) {
     );
   });
 
+  // const sorted = ({ oldIndex, newIndex }) => {
+  // console.log(arrayMove(addedNewColor, oldIndex, newIndex));
+  // setAddedNewColor(arrayMove(...addedNewColor, oldIndex, newIndex));
+  // };
+  let onSortEnd = ({ oldIndex, newIndex }) => {
+    setAddedNewColor(arrayMove(addedNewColor, oldIndex, newIndex));
+  };
   // console.log(props.palettes);
 
   return (
@@ -264,14 +272,13 @@ function NewPaletteForm(props) {
       >
         <div className={classes.drawerHeader} />
         {/* <div className={classes.parentBoxContainer}> */}
-        {addedNewColor.map(c => (
-          <DraggableColorBox
-            color={c.color}
-            theName={c.name}
-            key={c.name}
-            handleDelete={handleDelete}
-          />
-        ))}
+        {/* heerrreee */}
+        <DraggableColorList
+          addedNewColor={addedNewColor}
+          handleDelete={handleDelete}
+          axis="xy"
+          onSortEnd={onSortEnd}
+        />
         {/* </div> */}
       </main>
     </div>
