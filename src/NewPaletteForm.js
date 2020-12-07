@@ -94,6 +94,8 @@ function NewPaletteForm(props) {
   const [addedNewColor, setAddedNewColor] = useState(props.palettes[0].colors);
   const [name, setColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
+  const fullPalette =
+    addedNewColor.length >= defaultProps.maxColors ? true : false;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -282,12 +284,10 @@ function NewPaletteForm(props) {
             variant="contained"
             type="submit"
             color="primary"
-            disabled={
-              addedNewColor.length >= defaultProps.maxColors ? true : false
-            }
+            disabled={fullPalette}
             style={{ backgroundColor: selectColor.currentColor }}
           >
-            Add Color
+            {fullPalette ? 'Full Palette' : 'Add Color'}
           </Button>
         </ValidatorForm>
       </Drawer>
