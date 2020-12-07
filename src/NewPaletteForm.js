@@ -88,9 +88,7 @@ function NewPaletteForm(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [selectColor, setSelectColor] = useState({ currentColor: 'teal' });
-  const [addedNewColor, setAddedNewColor] = useState([
-    { color: 'purple', name: 'purple' }
-  ]);
+  const [addedNewColor, setAddedNewColor] = useState(props.palettes[0].colors);
   const [name, setColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
 
@@ -163,17 +161,12 @@ function NewPaletteForm(props) {
     );
   });
 
-  // const sorted = ({ oldIndex, newIndex }) => {
-  // console.log(arrayMove(addedNewColor, oldIndex, newIndex));
-  // setAddedNewColor(arrayMove(...addedNewColor, oldIndex, newIndex));
-  // };
-
   // !!!! Add routes for go back button !!!!
 
   let onSortEnd = ({ oldIndex, newIndex }) => {
     setAddedNewColor(arrayMove(addedNewColor, oldIndex, newIndex));
   };
-  // console.log(props.palettes);
+  console.log(props.palettes[0].colors);
 
   return (
     <div className={classes.root}>
