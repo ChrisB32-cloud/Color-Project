@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import Drawer from '@material-ui/core/Drawer';
@@ -224,6 +224,11 @@ function NewPaletteForm(props) {
             <Button variant="contained" color="primary" type="submit">
               Save Palette
             </Button>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" color="secondary">
+                Go Back
+              </Button>
+            </Link>
           </ValidatorForm>
         </Toolbar>
       </AppBar>
