@@ -254,6 +254,7 @@ function NewPaletteForm(props) {
           <Button
             variant="contained"
             color="primary"
+            disabled={fullPalette}
             onClick={randomColorGenerater}
           >
             Randon Color
@@ -285,7 +286,9 @@ function NewPaletteForm(props) {
             type="submit"
             color="primary"
             disabled={fullPalette}
-            style={{ backgroundColor: selectColor.currentColor }}
+            style={{
+              backgroundColor: fullPalette ? 'grey' : selectColor.currentColor
+            }}
           >
             {fullPalette ? 'Full Palette' : 'Add Color'}
           </Button>
