@@ -18,6 +18,9 @@ import arrayMove from 'array-move';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 const drawerWidth = 400;
+const defaultProps = {
+  maxColors: 20
+};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -166,7 +169,23 @@ function NewPaletteForm(props) {
   let onSortEnd = ({ oldIndex, newIndex }) => {
     setAddedNewColor(arrayMove(addedNewColor, oldIndex, newIndex));
   };
-  console.log(props.palettes[0].colors);
+
+  const handleClearPalette = () => {
+    setAddedNewColor([]);
+    // console.log('clicked');
+  };
+
+  const randomColorGenerater = () => {
+    let randomColor = Math.floor(Math.random() * 255);
+    let randomColor1 = Math.floor(Math.random() * 255);
+    let randomColor2 = Math.floor(Math.random() * 255);
+
+    setSelectColor({
+      currentColor: `rgb(${randomColor}, ${randomColor1}, ${randomColor2})`
+    });
+  };
+
+  // console.log(props.palettes[0].colors);
 
   return (
     <div className={classes.root}>
@@ -223,10 +242,18 @@ function NewPaletteForm(props) {
         <Divider />
         <Typography variant="h4">Design Your Palette</Typography>
         <div>
-          <Button variant="contained" color="secondary">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleClearPalette}
+          >
             Clear Palette
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={randomColorGenerater}
+          >
             Randon Color
           </Button>
         </div>
@@ -255,6 +282,9 @@ function NewPaletteForm(props) {
             variant="contained"
             type="submit"
             color="primary"
+            disabled={
+              addedNewColor.length >= defaultProps.maxColors ? true : false
+            }
             style={{ backgroundColor: selectColor.currentColor }}
           >
             Add Color
