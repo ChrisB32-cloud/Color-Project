@@ -167,6 +167,9 @@ function NewPaletteForm(props) {
   // console.log(arrayMove(addedNewColor, oldIndex, newIndex));
   // setAddedNewColor(arrayMove(...addedNewColor, oldIndex, newIndex));
   // };
+
+  // !!!! Add routes for go back button !!!!
+
   let onSortEnd = ({ oldIndex, newIndex }) => {
     setAddedNewColor(arrayMove(addedNewColor, oldIndex, newIndex));
   };
