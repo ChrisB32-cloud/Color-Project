@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import PaletteFormNew from './PaletteFormNav';
-// import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
+import PaletteFormNew from './PaletteFormNav';
+import ColorPickerForm from './ColorPickerForm';
+import Button from '@material-ui/core/Button';
+// import { ChromePicker } from 'react-color';
 import Drawer from '@material-ui/core/Drawer';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DraggableColorList from './DraggableColorList';
 import arrayMove from 'array-move';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+// import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 const drawerWidth = 400;
 const defaultProps = {
@@ -77,9 +75,9 @@ function NewPaletteForm(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [selectColor, setSelectColor] = useState({ currentColor: 'teal' });
+  // const [selectColor, setSelectColor] = useState({ currentColor: 'teal' });
   const [addedNewColor, setAddedNewColor] = useState(props.palettes[0].colors);
-  const [name, setColorName] = useState('');
+  // const [name, setColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
   const fullPalette =
     addedNewColor.length >= defaultProps.maxColors ? true : false;
@@ -93,20 +91,22 @@ function NewPaletteForm(props) {
   };
 
   const updateColor = newColor => {
-    setSelectColor({ currentColor: newColor.hex });
+    // setSelectColor({ currentColor: newColor.hex });
   };
 
   const addColorName = e => {
-    setColorName({ [e.target.name]: e.target.value });
+    // setColorName(e.target.value);
   };
 
-  const addColorBoxes = () => {
+  const addColorBoxes = passedColor => {
+    // console.log(passedColor);
     setAddedNewColor([
       ...addedNewColor,
-      { color: selectColor.currentColor, name: name.name }
+      // { color: selectColor.currentColor, name: name }
+      passedColor
     ]);
-    setSelectColor({ currentColor: 'teal' });
-    setColorName({ name: '' });
+    // setSelectColor({ currentColor: 'teal' });
+    // setColorName('');
   };
 
   const savePalette = () => {
@@ -134,24 +134,22 @@ function NewPaletteForm(props) {
     );
   };
 
-  useEffect(() => {
-    // custom rule will have name 'isPasswordMatch'
-    ValidatorForm.addValidationRule('colorNameAlreadyExist', value =>
-      addedNewColor.every(
-        newC => newC.name.toLowerCase() !== value.toLowerCase()
-      )
-    );
-
-    ValidatorForm.addValidationRule('colorAlreadyExist', value =>
-      addedNewColor.every(newC => newC.color !== selectColor.currentColor)
-    );
-
-    ValidatorForm.addValidationRule('paletteAlreadyExist', value =>
-      props.palettes.every(
-        p => p.paletteName.toLowerCase() !== value.toLowerCase()
-      )
-    );
-  });
+  // useEffect(() => {
+  //   // custom rule will have name 'isPasswordMatch'
+  //   ValidatorForm.addValidationRule('colorNameAlreadyExist', value =>
+  //     addedNewColor.every(
+  //       newC => newC.name.toLowerCase() !== value.toLowerCase()
+  //     )
+  //   );
+  //   ValidatorForm.addValidationRule('colorAlreadyExist', value =>
+  //     addedNewColor.every(newC => newC.color !== selectColor.currentColor)
+  //   );
+  // ValidatorForm.addValidationRule('paletteAlreadyExist', value =>
+  //   props.palettes.every(
+  //     p => p.paletteName.toLowerCase() !== value.toLowerCase()
+  //   )
+  // );
+  // });
 
   // !!!! Add routes for go back button !!!!
 
@@ -169,9 +167,9 @@ function NewPaletteForm(props) {
     let randomColor1 = Math.floor(Math.random() * 255);
     let randomColor2 = Math.floor(Math.random() * 255);
 
-    setSelectColor({
-      currentColor: `rgb(${randomColor}, ${randomColor1}, ${randomColor2})`
-    });
+    // setSelectColor({
+    //   currentColor: `rgb(${randomColor}, ${randomColor1}, ${randomColor2})`
+    // });
   };
 
   // console.log(props.palettes[0].colors);
@@ -180,6 +178,8 @@ function NewPaletteForm(props) {
     <div className={classes.root}>
       <PaletteFormNew
         open={open}
+        palettes={props.palettes}
+        addedNewColor={addedNewColor}
         savePalette={savePalette}
         newPaletteName={newPaletteName}
         handleDrawerOpen={handleDrawerOpen}
@@ -218,7 +218,12 @@ function NewPaletteForm(props) {
             Randon Color
           </Button>
         </div>
-        <ChromePicker
+        <ColorPickerForm
+          fullPalette={fullPalette}
+          addColorBoxes={addColorBoxes}
+          addedNewColor={addedNewColor}
+        />
+        {/* <ChromePicker
           color={selectColor.currentColor}
           onChangeComplete={updateColor}
         />
@@ -227,7 +232,7 @@ function NewPaletteForm(props) {
             label="Color Name"
             onChange={addColorName}
             name="name"
-            value={name.name}
+            value={name}
             validators={[
               'required',
               'colorNameAlreadyExist',
@@ -250,7 +255,7 @@ function NewPaletteForm(props) {
           >
             {fullPalette ? 'Full Palette' : 'Add Color'}
           </Button>
-        </ValidatorForm>
+        </ValidatorForm> */}
       </Drawer>
       <main
         className={clsx(classes.content, {

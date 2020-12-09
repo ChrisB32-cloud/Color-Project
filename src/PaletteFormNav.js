@@ -88,6 +88,14 @@ function PaletteFormNew(props) {
     handleDrawerOpen
   } = props;
 
+  useEffect(() => {
+    ValidatorForm.addValidationRule('paletteAlreadyExist', value =>
+      props.palettes.every(
+        p => p.paletteName.toLowerCase() !== value.toLowerCase()
+      )
+    );
+  });
+
   return (
     <div>
       <CssBaseline />
