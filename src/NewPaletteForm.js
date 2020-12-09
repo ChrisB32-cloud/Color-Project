@@ -79,6 +79,7 @@ function NewPaletteForm(props) {
   const [addedNewColor, setAddedNewColor] = useState(props.palettes[0].colors);
   // const [name, setColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
+  const [genColor, setGenColor] = useState('');
   const fullPalette =
     addedNewColor.length >= defaultProps.maxColors ? true : false;
 
@@ -90,13 +91,13 @@ function NewPaletteForm(props) {
     setOpen(false);
   };
 
-  const updateColor = newColor => {
-    // setSelectColor({ currentColor: newColor.hex });
-  };
+  // const updateColor = newColor => {
+  // setSelectColor({ currentColor: newColor.hex });
+  // };
 
-  const addColorName = e => {
-    // setColorName(e.target.value);
-  };
+  // const addColorName = e => {
+  // setColorName(e.target.value);
+  // };
 
   const addColorBoxes = passedColor => {
     // console.log(passedColor);
@@ -167,12 +168,10 @@ function NewPaletteForm(props) {
     let randomColor1 = Math.floor(Math.random() * 255);
     let randomColor2 = Math.floor(Math.random() * 255);
 
-    // setSelectColor({
-    //   currentColor: `rgb(${randomColor}, ${randomColor1}, ${randomColor2})`
-    // });
+    setGenColor(`rgb(${randomColor}, ${randomColor1}, ${randomColor2})`);
   };
 
-  // console.log(props.palettes[0].colors);
+  // console.log(genColor);
 
   return (
     <div className={classes.root}>
@@ -222,6 +221,8 @@ function NewPaletteForm(props) {
           fullPalette={fullPalette}
           addColorBoxes={addColorBoxes}
           addedNewColor={addedNewColor}
+          genColor={genColor}
+          randomColorGenerater={randomColorGenerater}
         />
         {/* <ChromePicker
           color={selectColor.currentColor}
@@ -263,15 +264,12 @@ function NewPaletteForm(props) {
         })}
       >
         <div className={classes.drawerHeader} />
-        {/* <div className={classes.parentBoxContainer}> */}
-        {/* heerrreee */}
         <DraggableColorList
           addedNewColor={addedNewColor}
           handleDelete={handleDelete}
           axis="xy"
           onSortEnd={onSortEnd}
         />
-        {/* </div> */}
       </main>
     </div>
   );

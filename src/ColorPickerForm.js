@@ -17,7 +17,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 const ColorPickerForm = props => {
   const [currentColor, setCurrentColor] = useState('teal');
   const [nameOfColor, setNameOfColor] = useState('');
-  const { fullPalette, addColorBoxes } = props;
+  const { fullPalette, addColorBoxes, randomColorGenerater } = props;
 
   useEffect(() => {
     ValidatorForm.addValidationRule('nameExist', value =>
@@ -49,6 +49,8 @@ const ColorPickerForm = props => {
     // setCurrentColor('teal');
     setNameOfColor('');
   };
+
+  // setCurrentColor(props.genColor);
 
   return (
     <div>
