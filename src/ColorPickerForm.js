@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
@@ -13,8 +14,32 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
           addedNewColor={addedNewColor}   colts is colors
   /> */
 }
+const drawerWidth = 400;
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    // width: '100%'
+  },
+  picker: {
+    width: '355px !important',
+    // width: '100%, !important',
+    marginTop: '2rem'
+  },
+  addColor: {
+    width: '100%',
+    padding: '1rem',
+    marginTop: '2.5rem',
+    fontSize: '1.5rem'
+  },
+  colorNameInput: {
+    width: '100% ',
+    height: '30px'
+  }
+}));
 
 const ColorPickerForm = props => {
+  const classes = useStyles();
+  const theme = useTheme();
   const [currentColor, setCurrentColor] = useState('teal');
   const [nameOfColor, setNameOfColor] = useState('');
   const { fullPalette, addColorBoxes, randomColorGenerater } = props;
@@ -53,12 +78,20 @@ const ColorPickerForm = props => {
   // setCurrentColor(props.genColor);
 
   return (
-    <div>
-      <ChromePicker color={currentColor} onChangeComplete={updateColor} />
+    <div className={classes.root}>
+      <ChromePicker
+        color={currentColor}
+        onChangeComplete={updateColor}
+        className={classes.picker}
+      />
       <ValidatorForm onSubmit={handleSubmit}>
         <TextValidator
           value={nameOfColor}
+          placeholder="Color Name"
           name="nameColor"
+          variant="filled"
+          margin="normal"
+          className={classes.colorNameInput}
           onChange={handleChange}
           validators={['required', 'nameExist', 'colorExist']}
           errorMessages={[
@@ -72,6 +105,7 @@ const ColorPickerForm = props => {
           type="submit"
           color="primary"
           disabled={fullPalette}
+          className={classes.addColor}
           style={{
             backgroundColor: fullPalette ? 'grey' : currentColor
           }}
