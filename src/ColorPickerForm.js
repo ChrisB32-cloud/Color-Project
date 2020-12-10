@@ -46,7 +46,7 @@ const ColorPickerForm = props => {
 
     addColorBoxes(parentPass);
 
-    // setCurrentColor('teal');
+    setCurrentColor('teal');
     setNameOfColor('');
   };
 

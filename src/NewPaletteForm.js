@@ -91,14 +91,6 @@ function NewPaletteForm(props) {
     setOpen(false);
   };
 
-  // const updateColor = newColor => {
-  // setSelectColor({ currentColor: newColor.hex });
-  // };
-
-  // const addColorName = e => {
-  // setColorName(e.target.value);
-  // };
-
   const addColorBoxes = passedColor => {
     // console.log(passedColor);
     setAddedNewColor([
@@ -135,23 +127,6 @@ function NewPaletteForm(props) {
     );
   };
 
-  // useEffect(() => {
-  //   // custom rule will have name 'isPasswordMatch'
-  //   ValidatorForm.addValidationRule('colorNameAlreadyExist', value =>
-  //     addedNewColor.every(
-  //       newC => newC.name.toLowerCase() !== value.toLowerCase()
-  //     )
-  //   );
-  //   ValidatorForm.addValidationRule('colorAlreadyExist', value =>
-  //     addedNewColor.every(newC => newC.color !== selectColor.currentColor)
-  //   );
-  // ValidatorForm.addValidationRule('paletteAlreadyExist', value =>
-  //   props.palettes.every(
-  //     p => p.paletteName.toLowerCase() !== value.toLowerCase()
-  //   )
-  // );
-  // });
-
   // !!!! Add routes for go back button !!!!
 
   let onSortEnd = ({ oldIndex, newIndex }) => {
@@ -164,11 +139,24 @@ function NewPaletteForm(props) {
   };
 
   const randomColorGenerater = () => {
-    let randomColor = Math.floor(Math.random() * 255);
-    let randomColor1 = Math.floor(Math.random() * 255);
-    let randomColor2 = Math.floor(Math.random() * 255);
+    // let randomColor = Math.floor(Math.random() * 255);
+    // let randomColor1 = Math.floor(Math.random() * 255);
+    // let randomColor2 = Math.floor(Math.random() * 255);
 
-    setGenColor(`rgb(${randomColor}, ${randomColor1}, ${randomColor2})`);
+    // setGenColor(`rgb(${randomColor}, ${randomColor1}, ${randomColor2})`);
+
+    const allColors = props.palettes.map(p => p.colors).flat();
+    let rand;
+    let randomColor;
+    let isDuplicateColor = true;
+    while (isDuplicateColor) {
+      rand = Math.floor(Math.random() * allColors.length);
+      randomColor = allColors[rand];
+      isDuplicateColor = addedNewColor.some(
+        color => color.name === randomColor.name
+      );
+    }
+    setAddedNewColor([...addedNewColor, randomColor]);
   };
 
   // console.log(genColor);
@@ -224,7 +212,53 @@ function NewPaletteForm(props) {
           genColor={genColor}
           randomColorGenerater={randomColorGenerater}
         />
-        {/* <ChromePicker
+      </Drawer>
+      <main
+        className={clsx(classes.content, {
+          [classes.contentShift]: open
+        })}
+      >
+        <div className={classes.drawerHeader} />
+        <DraggableColorList
+          addedNewColor={addedNewColor}
+          handleDelete={handleDelete}
+          axis="xy"
+          onSortEnd={onSortEnd}
+        />
+      </main>
+    </div>
+  );
+}
+
+export default NewPaletteForm;
+
+// const updateColor = newColor => {
+// setSelectColor({ currentColor: newColor.hex });
+// };
+
+// const addColorName = e => {
+// setColorName(e.target.value);
+// };
+
+// useEffect(() => {
+//   // custom rule will have name 'isPasswordMatch'
+//   ValidatorForm.addValidationRule('colorNameAlreadyExist', value =>
+//     addedNewColor.every(
+//       newC => newC.name.toLowerCase() !== value.toLowerCase()
+//     )
+//   );
+//   ValidatorForm.addValidationRule('colorAlreadyExist', value =>
+//     addedNewColor.every(newC => newC.color !== selectColor.currentColor)
+//   );
+// ValidatorForm.addValidationRule('paletteAlreadyExist', value =>
+//   props.palettes.every(
+//     p => p.paletteName.toLowerCase() !== value.toLowerCase()
+//   )
+// );
+// });
+
+{
+  /* <ChromePicker
           color={selectColor.currentColor}
           onChangeComplete={updateColor}
         />
@@ -256,23 +290,5 @@ function NewPaletteForm(props) {
           >
             {fullPalette ? 'Full Palette' : 'Add Color'}
           </Button>
-        </ValidatorForm> */}
-      </Drawer>
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open
-        })}
-      >
-        <div className={classes.drawerHeader} />
-        <DraggableColorList
-          addedNewColor={addedNewColor}
-          handleDelete={handleDelete}
-          axis="xy"
-          onSortEnd={onSortEnd}
-        />
-      </main>
-    </div>
-  );
+        </ValidatorForm> */
 }
-
-export default NewPaletteForm;
