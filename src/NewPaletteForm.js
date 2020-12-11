@@ -118,13 +118,13 @@ function NewPaletteForm(props) {
     // setColorName('');
   };
 
-  const savePalette = () => {
+  const savePalette = emo => {
     let newName = newPaletteName;
 
     const newColorsPassed = {
       paletteName: newName,
       id: newName.replace(/ /g, '-').toLowerCase(),
-      emoji: 'em',
+      emoji: emo,
       colors: [...addedNewColor]
     };
     props.handleSave(newColorsPassed);

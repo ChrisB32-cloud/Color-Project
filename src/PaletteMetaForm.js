@@ -10,7 +10,7 @@ import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
 
 const PaletteMetaForm = props => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [showEmoji, setShowEmoji] = useState(false);
   const { savePalette, newPaletteName, handleNewPaletteName, palettes } = props;
 
@@ -34,50 +34,61 @@ const PaletteMetaForm = props => {
     setShowEmoji(true);
   };
 
+  const handleEmojiPick = emo => {
+    savePalette(emo.native);
+  };
+
   return (
     <div>
       <Button variant="contained" color="primary" onClick={handleClickOpen}>
         Save
       </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-      >
-        <DialogTitle id="form-dialog-title">Create a Palette Name</DialogTitle>
-        <ValidatorForm onSubmit={savePalette}>
-          <DialogContent>
-            <DialogContentText>
-              Enter a name for your new Palette. Make sure the name that you
-              choose isn't a existing Palette name
-            </DialogContentText>
-            <Picker />
-            <TextValidator
-              label="Palette Name"
-              name="newPaletteName"
-              fullWidth
-              margin="normal"
-              value={newPaletteName}
-              onChange={handleNewPaletteName}
-              validators={['required', 'paletteAlreadyExist']}
-              errorMessages={['Enter Palette Name', 'Palette Already Exist']}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              onClick={emojiDisplay}
-            >
-              Save Palette
-            </Button>
-          </DialogActions>
-        </ValidatorForm>
-      </Dialog>
+      {showEmoji === true ? (
+        <Dialog open={open}>
+          <Picker onSelect={handleEmojiPick} />
+        </Dialog>
+      ) : (
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            Create a Palette Name
+          </DialogTitle>
+          <ValidatorForm onSubmit={savePalette}>
+            <DialogContent>
+              <DialogContentText>
+                Enter a name for your new Palette. Make sure the name that you
+                choose isn't a existing Palette name
+              </DialogContentText>
+              <TextValidator
+                label="Palette Name"
+                name="newPaletteName"
+                fullWidth
+                margin="normal"
+                value={newPaletteName}
+                onChange={handleNewPaletteName}
+                validators={['required', 'paletteAlreadyExist']}
+                errorMessages={['Enter Palette Name', 'Palette Already Exist']}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                // type="submit"
+                onClick={emojiDisplay}
+              >
+                Save Palette
+              </Button>
+            </DialogActions>
+          </ValidatorForm>
+        </Dialog>
+      )}
     </div>
   );
 };
