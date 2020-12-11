@@ -37,34 +37,33 @@ const PaletteMetaForm = props => {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
-          <ValidatorForm onSubmit={savePalette}>
+        <DialogTitle id="form-dialog-title">Create a Palette Name</DialogTitle>
+        <ValidatorForm onSubmit={savePalette}>
+          <DialogContent>
+            <DialogContentText>
+              Enter a name for your new Palette. Make sure the name that you
+              choose isn't a existing Palette name
+            </DialogContentText>
             <TextValidator
               label="Palette Name"
               name="newPaletteName"
+              fullWidth
+              margin="normal"
               value={newPaletteName}
               onChange={handleNewPaletteName}
               validators={['required', 'paletteAlreadyExist']}
               errorMessages={['Enter Palette Name', 'Palette Already Exist']}
             />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
             <Button variant="contained" color="primary" type="submit">
               Save Palette
             </Button>
-          </ValidatorForm>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Go Back
-          </Button>
-        </DialogActions>
+          </DialogActions>
+        </ValidatorForm>
       </Dialog>
     </div>
   );

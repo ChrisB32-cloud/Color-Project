@@ -40,7 +40,10 @@ const useStyles = makeStyles(theme => ({
   },
   navBtns: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    // marginTop: '15px'
+    alignItems: 'center',
+    marginRight: '25px'
   },
   hide: {
     display: 'none'

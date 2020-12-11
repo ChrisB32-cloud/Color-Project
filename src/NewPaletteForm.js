@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { ChromePicker } from 'react-color';
+// import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+// import { ChromePicker } from 'react-color';
 import PaletteFormNew from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import Button from '@material-ui/core/Button';
