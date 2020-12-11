@@ -109,17 +109,17 @@ function PaletteFormNew(props) {
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
+          <Link to="/" style={{ textDecoration: 'none', marginRight: '10px' }}>
+            <Button variant="contained" color="secondary">
+              Go Back
+            </Button>
+          </Link>
           <PaletteMetaForm
             palettes={props.palettes}
             savePalette={savePalette}
             newPaletteName={newPaletteName}
             handleNewPaletteName={handleNewPaletteName}
           />
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" color="secondary">
-              Go Back
-            </Button>
-          </Link>
         </div>
       </AppBar>
     </div>
