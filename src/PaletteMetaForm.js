@@ -6,9 +6,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
 
 const PaletteMetaForm = props => {
   const [open, setOpen] = React.useState(false);
+  const [showEmoji, setShowEmoji] = useState(false);
   const { savePalette, newPaletteName, handleNewPaletteName, palettes } = props;
 
   useEffect(() => {
@@ -27,10 +30,14 @@ const PaletteMetaForm = props => {
     setOpen(false);
   };
 
+  const emojiDisplay = () => {
+    setShowEmoji(true);
+  };
+
   return (
     <div>
       <Button variant="contained" color="primary" onClick={handleClickOpen}>
-        Save Palette
+        Save
       </Button>
       <Dialog
         open={open}
@@ -44,6 +51,7 @@ const PaletteMetaForm = props => {
               Enter a name for your new Palette. Make sure the name that you
               choose isn't a existing Palette name
             </DialogContentText>
+            <Picker />
             <TextValidator
               label="Palette Name"
               name="newPaletteName"
@@ -59,7 +67,12 @@ const PaletteMetaForm = props => {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button variant="contained" color="primary" type="submit">
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              onClick={emojiDisplay}
+            >
               Save Palette
             </Button>
           </DialogActions>
