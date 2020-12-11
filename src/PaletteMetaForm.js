@@ -45,6 +45,7 @@ const PaletteMetaForm = props => {
       </Button>
       {showEmoji === true ? (
         <Dialog open={open}>
+          <DialogTitle id="form-dialog-title">Choose an Emoji</DialogTitle>
           <Picker onSelect={handleEmojiPick} />
         </Dialog>
       ) : (
