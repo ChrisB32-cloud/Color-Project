@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme, withStyles } from '@material-ui/core/styles';
 // import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // import { ChromePicker } from 'react-color';
+import useStyles from './styles/NewPaletteFormStyles';
 import PaletteFormNew from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import Button from '@material-ui/core/Button';
@@ -16,76 +17,9 @@ import DraggableColorList from './DraggableColorList';
 import arrayMove from 'array-move';
 // import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-const drawerWidth = 400;
 const defaultProps = {
   maxColors: 20
 };
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex'
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  hide: {
-    display: 'none'
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    display: 'flex',
-    alignItems: 'center'
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end'
-  },
-  content: {
-    flexGrow: 1,
-    height: 'calc(100vh - 64px)',
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    marginLeft: -drawerWidth
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    }),
-    marginLeft: 0
-  },
-  parentBoxContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    padding: '20px'
-  },
-  container: {
-    width: '90%',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttons: {
-    width: '100%'
-  },
-  button: {
-    width: '50%'
-  }
-}));
 
 function NewPaletteForm(props) {
   const classes = useStyles();
@@ -252,7 +186,7 @@ function NewPaletteForm(props) {
   );
 }
 
-export default NewPaletteForm;
+export default withStyles(useStyles)(NewPaletteForm);
 
 // const updateColor = newColor => {
 // setSelectColor({ currentColor: newColor.hex });
@@ -314,3 +248,12 @@ export default NewPaletteForm;
           </Button>
         </ValidatorForm> */
 }
+
+// rgb random color generate function
+// function randomeRGBColorGenerate() {
+// let randomColor = Math.floor(Math.random() * 255);
+// let randomColor1 = Math.floor(Math.random() * 255);
+// let randomColor2 = Math.floor(Math.random() * 255);
+
+// setGenColor(`rgb(${randomColor}, ${randomColor1}, ${randomColor2})`);
+// }
