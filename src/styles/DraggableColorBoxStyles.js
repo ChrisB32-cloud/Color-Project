@@ -30,5 +30,5 @@ const styles = {
     transition: 'all 0.3s ease-in-out'
   }
 };
-
+// drag styles
 export default styles;
