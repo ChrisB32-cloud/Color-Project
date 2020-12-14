@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme, withStyles, makeStyles } from '@material-ui/core/styles';
+// import useStyles from './styles/PaletteFormNavStyles';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -65,8 +66,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function PaletteFormNew(props) {
+function PaletteFormNav(props) {
   const classes = useStyles();
+  const theme = useTheme();
   const {
     savePalette,
     newPaletteName,
@@ -126,4 +128,5 @@ function PaletteFormNew(props) {
   );
 }
 
-export default PaletteFormNew;
+export default PaletteFormNav;
+// export default withStyles(useStyles)(PaletteFormNav);

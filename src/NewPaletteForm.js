@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { useTheme, withStyles } from '@material-ui/core/styles';
-// import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-// import { ChromePicker } from 'react-color';
 import useStyles from './styles/NewPaletteFormStyles';
-import PaletteFormNew from './PaletteFormNav';
+import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import Button from '@material-ui/core/Button';
-// import { ChromePicker } from 'react-color';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -15,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DraggableColorList from './DraggableColorList';
 import arrayMove from 'array-move';
-// import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 const defaultProps = {
   maxColors: 20
@@ -113,7 +109,7 @@ function NewPaletteForm(props) {
 
   return (
     <div className={classes.root}>
-      <PaletteFormNew
+      <PaletteFormNav
         open={open}
         palettes={props.palettes}
         addedNewColor={addedNewColor}
