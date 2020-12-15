@@ -8,48 +8,57 @@ import SingleColorPalette from './SingleColorPalette';
 import NewPaletteForm from './NewPaletteForm';
 
 class App extends Component {
-
   constructor(props) {
-    super(props)
+    super(props);
+    const localCheck = localStorage.getItem('ourPalettes');
+    const stickLocal = JSON.parse(localCheck);
+    this.state = { palettes: stickLocal || seedColors };
 
-    this.state = { palettes: seedColors }
-
-    this.handleSave = this.handleSave.bind(this)
-    this.findPalette = this.findPalette.bind(this)
-
+    this.handleSave = this.handleSave.bind(this);
+    this.findPalette = this.findPalette.bind(this);
+    this.storeData = this.storeData.bind(this);
   }
 
   findPalette(id) {
-    return this.state.palettes.find(function (palette) {
+    return this.state.palettes.find(function(palette) {
       return palette.id === id;
     });
   }
 
   handleSave(passedColorPalette) {
+    this.setState(
+      {
+        palettes: [...this.state.palettes, passedColorPalette]
+      },
+      () => {
+        this.storeData();
+      }
+    );
+  }
 
-    // console.log(this.state.palettes)
-    // console.log(passedColorPalette);
-
-    this.setState({ palettes: [...this.state.palettes, passedColorPalette] })
-
-
+  storeData(passed) {
+    localStorage.setItem('ourPalettes', JSON.stringify(this.state.palettes));
   }
 
   render() {
-
     // console.log(this.state.palettes);
 
     return (
       <Switch>
         <Route
           exact
-          path='/palette/newpalette'
-          render={(routeProps) =>
-            <NewPaletteForm {...routeProps} palettes={this.state.palettes} handleSave={this.handleSave} />}
+          path="/palette/newpalette"
+          render={routeProps => (
+            <NewPaletteForm
+              {...routeProps}
+              palettes={this.state.palettes}
+              handleSave={this.handleSave}
+            />
+          )}
         />
         <Route
           exact
-          path='/palette/:paletteId/:colorId'
+          path="/palette/:paletteId/:colorId"
           render={routeProps => (
             <SingleColorPalette
               colorId={routeProps.match.params.colorId}
@@ -61,13 +70,18 @@ class App extends Component {
         />
         <Route
           exact
-          path='/'
-          render={(routeProps) =>
-            <PaletteList {...routeProps} myPalettes={this.state.palettes} key={1.2} />}
+          path="/"
+          render={routeProps => (
+            <PaletteList
+              {...routeProps}
+              myPalettes={this.state.palettes}
+              key={1.2}
+            />
+          )}
         />
         <Route
           exact
-          path='/palette/:id'
+          path="/palette/:id"
           render={routeProps => (
             <Palette
               palette={generatePalette(
