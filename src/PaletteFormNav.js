@@ -78,14 +78,6 @@ function PaletteFormNav(props) {
     handleDrawerOpen
   } = props;
 
-  // useEffect(() => {
-  //   ValidatorForm.addValidationRule('paletteAlreadyExist', value =>
-  //     props.palettes.every(
-  //       p => p.paletteName.toLowerCase() !== value.toLowerCase()
-  //     )
-  //   );
-  // });
-
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -130,3 +122,11 @@ function PaletteFormNav(props) {
 
 export default PaletteFormNav;
 // export default withStyles(useStyles)(PaletteFormNav);
+
+// useEffect(() => {
+//   ValidatorForm.addValidationRule('paletteAlreadyExist', value =>
+//     props.palettes.every(
+//       p => p.paletteName.toLowerCase() !== value.toLowerCase()
+//     )
+//   );
+// });
