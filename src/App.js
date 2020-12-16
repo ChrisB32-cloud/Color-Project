@@ -37,7 +37,12 @@ class App extends Component {
     );
   }
 
-  handlePaletteDelete() {}
+  handlePaletteDelete(boxId) {
+    // console.log(boxId);
+    this.setState({
+      palettes: this.state.palettes.filter(p => p.id !== boxId)
+    });
+  }
 
   storeData(passed) {
     localStorage.setItem('ourPalettes', JSON.stringify(this.state.palettes));

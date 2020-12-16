@@ -18,6 +18,27 @@ export default {
     borderRadius: '5px',
     overflow: 'hidden'
   },
+  deleteBox: {
+    position: 'absolute',
+    width: '100%',
+    left: '0px',
+    top: '0px',
+    padding: '10px',
+    color: 'transparent',
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    fontSize: '12px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    lineHeight: '30px',
+    '&:hover svg': {
+      color: 'black',
+      transform: 'scale(1.5)'
+    }
+  },
+  delete: {
+    transition: 'all 0.3s ease-in-out'
+  },
   miniBox: {
     height: '25%',
     width: '20%',
