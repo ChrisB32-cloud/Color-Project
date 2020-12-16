@@ -13,6 +13,8 @@ function MiniPalette(props) {
     handlePaletteDelete
   } = props;
   // can extract out id if we need to
+  //!!!! important, consider using e.stopPropagation
+  // instead of moving the onClick to show the individual palettes
 
   const handleDelete = () => {
     handlePaletteDelete(props.id);
@@ -28,10 +30,9 @@ function MiniPalette(props) {
           onClick={handleDelete}
         />
       </div>
-      <div className={classes.colors}>
+      <div className={classes.colors} onClick={myPaletteFunction}>
         {colors.map(color => (
           <div
-            onClick={myPaletteFunction}
             className={classes.miniBox}
             style={{ backgroundColor: color.color }}
             key={color.name}
