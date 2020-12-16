@@ -7,8 +7,11 @@ export default {
     padding: '0.5rem',
     position: 'relative',
     overflow: 'hidden',
-    '&:hover': {
-      cursor: 'pointer'
+    cursor: 'pointer',
+    '&:hover svg': {
+      color: 'white',
+      backgroundColor: 'red',
+      transform: 'scale(1.8)'
     }
   },
   colors: {
@@ -20,21 +23,18 @@ export default {
   },
   deleteBox: {
     position: 'absolute',
-    width: '100%',
-    left: '0px',
+    width: '20px',
+    height: '20px',
+    right: '0px',
     top: '0px',
     padding: '10px',
+    zIndex: 10,
+    // borderRadius: '5px',
     color: 'transparent',
-    letterSpacing: '1px',
-    textTransform: 'uppercase',
-    fontSize: '12px',
+    // fontSize: '5px',
     display: 'flex',
-    justifyContent: 'space-between',
-    lineHeight: '30px',
-    '&:hover svg': {
-      color: 'black',
-      transform: 'scale(1.5)'
-    }
+    justifyContent: 'center',
+    lineHeight: '30px'
   },
   delete: {
     transition: 'all 0.3s ease-in-out'

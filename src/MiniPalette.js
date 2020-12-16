@@ -21,6 +21,13 @@ function MiniPalette(props) {
   //   console.log(props.id);
   return (
     <div className={classes.root}>
+      <div className={classes.deleteBox}>
+        <DeleteIcon
+          //   style={{ fontSize: '22px' }}
+          className={classes.delete}
+          onClick={handleDelete}
+        />
+      </div>
       <div className={classes.colors}>
         {colors.map(color => (
           <div
@@ -30,9 +37,6 @@ function MiniPalette(props) {
             key={color.name}
           />
         ))}
-      </div>
-      <div className={classes.deleteBox}>
-        <DeleteIcon className={classes.delete} onClick={handleDelete} />
       </div>
       <h5 className={classes.title}>
         {' '}
