@@ -17,6 +17,7 @@ class App extends Component {
     this.handleSave = this.handleSave.bind(this);
     this.findPalette = this.findPalette.bind(this);
     this.storeData = this.storeData.bind(this);
+    this.handlePaletteDelete = this.handlePaletteDelete.bind(this);
   }
 
   findPalette(id) {
@@ -35,6 +36,8 @@ class App extends Component {
       }
     );
   }
+
+  handlePaletteDelete() {}
 
   storeData(passed) {
     localStorage.setItem('ourPalettes', JSON.stringify(this.state.palettes));
@@ -76,6 +79,7 @@ class App extends Component {
               {...routeProps}
               myPalettes={this.state.palettes}
               key={1.2}
+              handlePaletteDelete={this.handlePaletteDelete}
             />
           )}
         />
