@@ -39,9 +39,14 @@ class App extends Component {
 
   handlePaletteDelete(boxId) {
     // console.log(boxId);
-    this.setState({
-      palettes: this.state.palettes.filter(p => p.id !== boxId)
-    });
+    this.setState(
+      {
+        palettes: this.state.palettes.filter(p => p.id !== boxId)
+      },
+      () => {
+        this.storeData();
+      }
+    );
   }
 
   storeData(passed) {
