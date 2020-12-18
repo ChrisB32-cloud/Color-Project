@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme, withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Dialog from '@material-ui/core/Dialog';
@@ -7,7 +8,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+const useStyles = makeStyles(theme => ({
+  delete: {
+    transition: 'all 0.3s ease-in-out'
+  }
+}));
+
 const MiniMetaForm = props => {
+  const classes = useStyles();
+  const theme = useTheme();
   const { handlePaletteDelete, id } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -28,7 +37,7 @@ const MiniMetaForm = props => {
       {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Open form dialog
       </Button> */}
-      <DeleteIcon onClick={handleClickOpen} />
+      <DeleteIcon className={classes.delete} onClick={handleClickOpen} />
       <Dialog
         open={open}
         onClose={handleClose}
