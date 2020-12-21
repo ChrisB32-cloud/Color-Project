@@ -30,6 +30,7 @@ const MiniMetaForm = props => {
 
   const paletteDelete = () => {
     handlePaletteDelete(id);
+    setOpen(false);
   };
 
   return (
