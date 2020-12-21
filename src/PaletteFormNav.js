@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 // import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import PaletteMetaForm from './PaletteMetaForm';
+import sizes from './styles/Sizes';
 
 const drawerWidth = 400;
 
@@ -44,7 +45,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     // marginTop: '15px'
     alignItems: 'center',
-    marginRight: '25px'
+    marginRight: '25px',
+    [sizes.down('xs')]: {
+      margin: '0'
+    }
   },
   hide: {
     display: 'none'
