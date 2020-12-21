@@ -1,49 +1,60 @@
+import sizes from './Sizes';
+
 export default {
-    NavBar: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        height: '6vh',
-    },
+  NavBar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    height: '6vh'
+    // [sizes.down('xs')]: {
+    //   flexDirection: 'column',
+    //   justifyContent: 'center'
+    // }
+  },
 
-    logo: {
-        padding: '0 13px',
-        marginRight: '15px',
-        fontsize: '22px',
-        backgroundColor: '#eceff1',
-        fontFamily: 'Roboto',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        "& a": {
-            textDecoration: 'none',
-            color: 'black',
-        }
+  logo: {
+    padding: '0 13px',
+    marginRight: '15px',
+    fontsize: '22px',
+    backgroundColor: '#eceff1',
+    fontFamily: 'Roboto',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    '& a': {
+      textDecoration: 'none',
+      color: 'black'
     },
-    slider: {
-        width: '340px',
-        margin: '0 10px',
-        display: 'inline-block',
-        "& .rc-slider-track": {
-            backgroundColor: 'transparent',
-        },
-        "& .rc-slider-rail": {
-            height: '8px'
-        },
-        "& .rc-slider-handle, .rc-slider-handle:active, .rc-slider-handle:focus, .rc-slider-handle:hover ": {
-            backgroundColor: 'green',
-            outline: 'none',
-            border: '2px solid green',
-            boxShadow: 'none',
-            width: '13px',
-            height: '13px',
-            marginRight: '-7px',
-            marginTop: '-3px',
-        }
-    },
-    selectContainer: {
-        marginLeft: 'auto',
-        marginRight: '1rem',
+    [sizes.down('xs')]: {
+      display: 'none'
     }
-
-}
+  },
+  slider: {
+    width: '340px',
+    margin: '0 10px',
+    display: 'inline-block',
+    '& .rc-slider-track': {
+      backgroundColor: 'transparent'
+    },
+    '& .rc-slider-rail': {
+      height: '8px'
+    },
+    '& .rc-slider-handle, .rc-slider-handle:active, .rc-slider-handle:focus, .rc-slider-handle:hover ': {
+      backgroundColor: 'green',
+      outline: 'none',
+      border: '2px solid green',
+      boxShadow: 'none',
+      width: '13px',
+      height: '13px',
+      marginRight: '-7px',
+      marginTop: '-3px'
+    },
+    [sizes.down('md')]: {
+      width: '150px'
+    }
+  },
+  selectContainer: {
+    marginLeft: 'auto',
+    marginRight: '1rem'
+  }
+};
