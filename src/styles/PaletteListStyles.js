@@ -16,11 +16,12 @@ export default {
     display: 'flex',
     alignItems: 'flex-start',
     flexDirection: 'row',
-    flexWrap: 'wrap'
-    // [sizes.down('md')]: {
-    //   alignItems: 'center',
-    //   justifyContent: 'center'
-    // }
+    flexWrap: 'wrap',
+    [sizes.down('sm')]: {
+      width: '50%',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
 
     // border: '1px solid white'
   },
@@ -40,8 +41,15 @@ export default {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 30%)',
     gridGap: '5%',
+    [sizes.down('lg')]: {
+      gridTemplateColumns: 'repeat(2, 50%)'
+    },
     [sizes.down('md')]: {
       gridTemplateColumns: 'repeat(2, 50%)'
+    },
+    [sizes.down('sm')]: {
+      alignItems: 'center',
+      gridTemplateColumns: 'repeat(1, 75%)'
     },
     [sizes.down('xs')]: {
       gridGap: '2.5%',
