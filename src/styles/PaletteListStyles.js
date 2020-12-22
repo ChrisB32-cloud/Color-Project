@@ -1,13 +1,18 @@
 import sizes from './Sizes';
+import FlatMountains from './FlatMountains.svg';
 
 export default {
   root: {
-    backgroundColor: 'blue',
+    // backgroundColor: 'blue',
     display: 'flex',
     height: '100vh',
     alignItmes: 'flex-start',
     justifyContent: 'center',
-    overflow: 'scroll'
+    overflow: 'scroll',
+    backgroundColor: ' #ff7700',
+    backgroundImage: `url(${FlatMountains})`,
+    backgroundAttachment: 'fixed',
+    backgroundSize: 'cover'
   },
   container: {
     width: '50%',
