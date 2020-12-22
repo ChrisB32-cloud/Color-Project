@@ -2,6 +2,16 @@ import sizes from './Sizes';
 import FlatMountains from './FlatMountains.svg';
 
 export default {
+  '@global': {
+    '.fade-exit': {
+      opacity: '1'
+    },
+    '.fade-exit-active': {
+      opacity: '0',
+      transform: 'scale(0.9)',
+      transition: 'opacity 500ms ease-out, transform 300ms'
+    }
+  },
   root: {
     display: 'flex',
     height: '100vh',

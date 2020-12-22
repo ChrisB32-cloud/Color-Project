@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles/MiniPaletteStyles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles } from '@material-ui/styles';
@@ -17,20 +17,15 @@ function MiniPalette(props) {
   //!!!! important, consider using e.stopPropagation
   // instead of moving the onClick to show the individual palettes
 
-  // const handleDelete = () => {
-  //   handlePaletteDelete(props.id);
-  // };
-
   //   console.log(props.id);
   return (
     <div className={classes.root}>
       <div className={classes.deleteBox}>
-        {/* <DeleteIcon
-          //   style={{ fontSize: '22px' }}
-          className={classes.delete}
-          onClick={handleDelete}
-        /> */}
-        <MiniMetaForm handlePaletteDelete={handlePaletteDelete} id={props.id} />
+        <MiniMetaForm
+          handlePaletteDelete={handlePaletteDelete}
+          id={props.id}
+          handleTransition={props.handleTransition}
+        />
       </div>
       <div className={classes.colors} onClick={myPaletteFunction}>
         {colors.map(color => (
@@ -64,3 +59,11 @@ export default withStyles(styles)(MiniPalette);
 //     </section>
 //     <span>aklsdf</span>
 //</div>
+
+{
+  /* <DeleteIcon
+          //   style={{ fontSize: '22px' }}
+          className={classes.delete}
+          onClick={handleDelete}
+        /> */
+}

@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 const MiniMetaForm = props => {
   const classes = useStyles();
   const theme = useTheme();
-  const { handlePaletteDelete, id } = props;
+  const { handlePaletteDelete, handleTransition, id } = props;
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -30,6 +30,7 @@ const MiniMetaForm = props => {
 
   const paletteDelete = () => {
     handlePaletteDelete(id);
+    handleTransition(true);
     setOpen(false);
   };
 
