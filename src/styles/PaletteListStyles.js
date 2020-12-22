@@ -3,12 +3,12 @@ import FlatMountains from './FlatMountains.svg';
 
 export default {
   root: {
-    // backgroundColor: 'blue',
     display: 'flex',
     height: '100vh',
     alignItmes: 'flex-start',
     justifyContent: 'center',
     overflow: 'scroll',
+    // background by SVGBackgrounds.com
     backgroundColor: ' #ff7700',
     backgroundImage: `url(${FlatMountains})`,
     backgroundAttachment: 'fixed',
