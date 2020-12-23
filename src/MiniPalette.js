@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './styles/MiniPaletteStyles';
-import DeleteIcon from '@material-ui/icons/Delete';
+// import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles } from '@material-ui/styles';
 import MiniMetaForm from './MiniMetaForm';
 
@@ -59,11 +59,3 @@ export default withStyles(styles)(MiniPalette);
 //     </section>
 //     <span>aklsdf</span>
 //</div>
-
-{
-  /* <DeleteIcon
-          //   style={{ fontSize: '22px' }}
-          className={classes.delete}
-          onClick={handleDelete}
-        /> */
-}

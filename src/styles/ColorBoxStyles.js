@@ -1,5 +1,6 @@
 import chroma from 'chroma-js';
 import sizes from './Sizes';
+// import { style } from '@material-ui/system';
 
 export default {
   ColorBox: {
@@ -139,3 +140,5 @@ export default {
     transitionDelay: '0.3s'
   }
 };
+
+// export default style;

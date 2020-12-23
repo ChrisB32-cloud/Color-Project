@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
-import { useTheme, withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import useStyles from './styles/NewPaletteFormStyles';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
@@ -19,13 +19,13 @@ const defaultProps = {
 
 function NewPaletteForm(props) {
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   // const [selectColor, setSelectColor] = useState({ currentColor: 'teal' });
   const [addedNewColor, setAddedNewColor] = useState(props.palettes[0].colors);
   // const [name, setColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
-  const [genColor, setGenColor] = useState('');
+  // const [genColor, setGenColor] = useState('');
   const fullPalette =
     addedNewColor.length >= defaultProps.maxColors ? true : false;
 
@@ -93,16 +93,16 @@ function NewPaletteForm(props) {
 
     const allColors = props.palettes.map(p => p.colors).flat();
     let rand;
-    let randomColor;
+    let genRandColor;
     let isDuplicateColor = true;
     while (isDuplicateColor) {
       rand = Math.floor(Math.random() * allColors.length);
-      randomColor = allColors[rand];
+      genRandColor = allColors[rand];
       isDuplicateColor = addedNewColor.some(
-        color => color.name === randomColor.name
+        color => color.name === genRandColor.name
       );
     }
-    setAddedNewColor([...addedNewColor, randomColor]);
+    setAddedNewColor([...addedNewColor, genRandColor]);
   };
 
   // console.log(genColor);
@@ -160,7 +160,7 @@ function NewPaletteForm(props) {
             fullPalette={fullPalette}
             addColorBoxes={addColorBoxes}
             addedNewColor={addedNewColor}
-            genColor={genColor}
+            // genColor={genColor}
             randomColorGenerater={randomColorGenerater}
           />
         </div>
@@ -209,8 +209,7 @@ export default withStyles(useStyles)(NewPaletteForm);
 // );
 // });
 
-{
-  /* <ChromePicker
+/* <ChromePicker
           color={selectColor.currentColor}
           onChangeComplete={updateColor}
         />
@@ -243,7 +242,6 @@ export default withStyles(useStyles)(NewPaletteForm);
             {fullPalette ? 'Full Palette' : 'Add Color'}
           </Button>
         </ValidatorForm> */
-}
 
 // rgb random color generate function
 // function randomeRGBColorGenerate() {

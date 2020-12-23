@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DraggableColorBox from './DraggableColorBox';
 import { SortableContainer } from 'react-sortable-hoc';
 
 const DraggableColorList = SortableContainer(
   ({ addedNewColor, handleDelete }) => {
-    const [passedColor, setPassedColor] = useState();
+    // const [passedColor, setPassedColor] = useState();
 
     // setPassedColor({ passedColor: addedNewColor });
     // console.log(passedColor);

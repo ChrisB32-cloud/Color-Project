@@ -15,6 +15,9 @@ class PaletteList extends Component {
 
     // this.goToPalette = this.goToPalette.bind(this)
     this.handleTransition = this.handleTransition.bind(this);
+    this.handleMiniPaletteDeleteTrans = this.handleMiniPaletteDeleteTrans.bind(
+      this
+    );
   }
 
   goToPalette(id) {
@@ -22,6 +25,10 @@ class PaletteList extends Component {
   }
 
   handleTransition(bool) {
+    this.handleMiniPaletteDeleteTrans(bool);
+  }
+
+  handleMiniPaletteDeleteTrans(bool) {
     this.setState({ transOut: bool });
     setTimeout(() => {
       this.setState({ transOut: false });
@@ -47,7 +54,7 @@ class PaletteList extends Component {
                 key={p.id}
                 classNames="fade"
                 timeout={500}
-                onExited={this.state.transOut}
+                onExited={this.handleMiniPaletteDeleteTrans}
               >
                 <MiniPalette
                   {...p}
@@ -67,4 +74,7 @@ class PaletteList extends Component {
 
 export default withStyles(styles)(PaletteList);
 
-//
+//this.setState({ transOut: bool });
+// setTimeout(() => {
+//   this.setState({ transOut: false });
+// }, 500);

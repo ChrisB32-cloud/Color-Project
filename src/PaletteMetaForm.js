@@ -12,7 +12,7 @@ import 'emoji-mart/css/emoji-mart.css';
 const PaletteMetaForm = props => {
   const [open, setOpen] = useState(false);
   const [showEmoji, setShowEmoji] = useState(false);
-  const { savePalette, newPaletteName, handleNewPaletteName, palettes } = props;
+  const { savePalette, newPaletteName, handleNewPaletteName } = props;
 
   useEffect(() => {
     ValidatorForm.addValidationRule('paletteAlreadyExist', value =>

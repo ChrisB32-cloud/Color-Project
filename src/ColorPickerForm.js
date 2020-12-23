@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
@@ -7,14 +7,12 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 // - This is the change in varibles from colts to mine that are being passed down
 // - from NewPaletteForm.js, keep in mind code is functional components with hooks
 
-{
-  /* <ColorPickerForm
+/* <ColorPickerForm
           fullPalette={fullPalette}      colts is paletteIsFull
           addColorBoxes={addColorBoxes}   colts is this.addNewColor
           addedNewColor={addedNewColor}   colts is colors
   /> */
-}
-const drawerWidth = 400;
+// const drawerWidth = 400;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,10 +37,10 @@ const useStyles = makeStyles(theme => ({
 
 const ColorPickerForm = props => {
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [currentColor, setCurrentColor] = useState('teal');
   const [nameOfColor, setNameOfColor] = useState('');
-  const { fullPalette, addColorBoxes, randomColorGenerater } = props;
+  const { fullPalette, addColorBoxes } = props;
 
   useEffect(() => {
     ValidatorForm.addValidationRule('nameExist', value =>

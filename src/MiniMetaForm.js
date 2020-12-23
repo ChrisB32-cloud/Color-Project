@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme, withStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
 
 const MiniMetaForm = props => {
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const { handlePaletteDelete, handleTransition, id } = props;
   const [open, setOpen] = React.useState(false);
 
