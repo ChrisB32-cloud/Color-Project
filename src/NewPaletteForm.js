@@ -65,14 +65,6 @@ function NewPaletteForm(props) {
     setNewPaletteName(e.target.value);
   };
 
-  const handleDelete = deleteBox => {
-    setAddedNewColor(
-      addedNewColor.filter(
-        n => n.name.toLowerCase() !== deleteBox.toLowerCase()
-      )
-    );
-  };
-
   // !!!! Add routes for go back button !!!!
 
   let onSortEnd = ({ oldIndex, newIndex }) => {
@@ -103,6 +95,14 @@ function NewPaletteForm(props) {
       );
     }
     setAddedNewColor([...addedNewColor, genRandColor]);
+  };
+
+  const handleDelete = deleteBox => {
+    setAddedNewColor(
+      addedNewColor.filter(
+        n => n.name.toLowerCase() !== deleteBox.toLowerCase()
+      )
+    );
   };
 
   // console.log(genColor);

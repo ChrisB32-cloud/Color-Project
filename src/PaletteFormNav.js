@@ -84,7 +84,7 @@ function PaletteFormNav(props) {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <AppBar
         position="fixed"
         color="default"
