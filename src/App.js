@@ -123,6 +123,10 @@ class App extends Component {
 
 export default withStyles(styles)(App);
 
+// Below is the page transitions I was working on
+// seems to have a bug to where I can't access the the
+// create palette form
+
 {
   /* <Route
         render={({ location }) => (
