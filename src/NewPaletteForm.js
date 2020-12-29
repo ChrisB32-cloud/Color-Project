@@ -105,7 +105,7 @@ function NewPaletteForm(props) {
     );
   };
 
-  // console.log(genColor);
+  // console.log(props);
 
   return (
     <div className={classes.root}>

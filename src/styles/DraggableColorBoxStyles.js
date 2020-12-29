@@ -26,12 +26,17 @@ const styles = {
       height: '5%'
     }
   },
+  nameSpace: {
+    marginLeft: '10px'
+  },
   boxContent: {
     position: 'absolute',
     width: '100%',
+    // marginRight: '30px',
     left: '0px',
+
     bottom: '0px',
-    padding: '10px',
+    // padding: '10px',
     color: 'rgba(0,0,0,0.5)',
     letterSpacing: '1px',
     textTransform: 'uppercase',
