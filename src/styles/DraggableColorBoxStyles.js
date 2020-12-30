@@ -41,7 +41,9 @@ const styles = {
     // color: 'rgba(0,0,0,0.5)',
     letterSpacing: '1px',
     color: props =>
-      chroma(props.color).luminance() >= 0.07 ? 'rgba(0,0,0,0.5)' : 'white',
+      chroma(props.color).luminance() >= 0.07
+        ? 'rgba(0,0,0,0.5)'
+        : 'rgba(229,234,234,1.0)',
     textTransform: 'uppercase',
     fontSize: '12px',
     display: 'flex',
