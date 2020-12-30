@@ -36,6 +36,8 @@ export default {
   colorName: {
     color: props =>
       chroma(props.boxColor).luminance() <= 0.08 ? 'white' : 'black'
+    // marginLeft: '10px',
+    // marginBottom: '40px'
   },
   seeMore: {
     position: 'absolute',
@@ -75,8 +77,8 @@ export default {
   boxContent: {
     position: 'absolute',
     width: '100%',
-    left: '0px',
-    bottom: '0px',
+    left: '10px',
+    bottom: '10px',
     // padding: '10px',
     // marginLeft: '2px',
     color: 'black',
