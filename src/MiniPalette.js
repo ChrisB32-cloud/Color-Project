@@ -12,12 +12,20 @@ function MiniPalette(props) {
     emoji,
     myPaletteFunction,
     handlePaletteDelete
+    // id
   } = props;
   // can extract out id if we need to
   //!!!! important, consider using e.stopPropagation
   // instead of moving the onClick to show the individual palettes
 
-  //   console.log(props.id);
+  const handlePalettes = e => {
+    e.stopPropagation();
+    myPaletteFunction(props.id);
+  };
+
+  // handlePalettes();
+
+  console.log('Rendering', props.id);
   return (
     <div className={classes.root}>
       <div className={classes.deleteBox}>
@@ -27,7 +35,12 @@ function MiniPalette(props) {
           handleTransition={props.handleTransition}
         />
       </div>
-      <div className={classes.colors} onClick={myPaletteFunction}>
+      <div
+        className={classes.colors}
+        //  onClick={myPaletteFunction}
+        onClick={handlePalettes}
+        // onClick={() => myPaletteFunction(props.id)}
+      >
         {colors.map(color => (
           <div
             className={classes.miniBox}

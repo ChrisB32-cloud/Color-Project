@@ -42,7 +42,8 @@ class App extends Component {
     );
   }
 
-  handlePaletteDelete(boxId) {
+  handlePaletteDelete(boxId, e) {
+    // e.stopPropagation();
     // console.log(boxId);
     this.setState(
       {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import styles from './styles/PaletteListStyles';
@@ -6,7 +6,7 @@ import Page from './Page';
 import { withStyles } from '@material-ui/styles';
 import MiniPalette from './MiniPalette';
 
-class PaletteList extends Component {
+class PaletteList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -19,6 +19,7 @@ class PaletteList extends Component {
     this.handleMiniPaletteDeleteTrans = this.handleMiniPaletteDeleteTrans.bind(
       this
     );
+    this.goToPalette = this.goToPalette.bind(this);
   }
 
   goToPalette(id) {
@@ -61,7 +62,8 @@ class PaletteList extends Component {
                   {...p}
                   key={idx}
                   handlePaletteDelete={this.props.handlePaletteDelete}
-                  myPaletteFunction={() => this.goToPalette(p.id)}
+                  myPaletteFunction={this.goToPalette}
+                  // myPaletteFunction={() => this.goToPalette(p.id)}
                   handleTransition={this.handleTransition}
                 />
               </CSSTransition>
