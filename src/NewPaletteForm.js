@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DraggableColorList from './DraggableColorList';
+import seedColors from './seedColor';
 import arrayMove from 'array-move';
 
 const defaultProps = {
@@ -22,7 +23,8 @@ function NewPaletteForm(props) {
   // const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   // const [selectColor, setSelectColor] = useState({ currentColor: 'teal' });
-  const [addedNewColor, setAddedNewColor] = useState(props.palettes[0].colors);
+  const [addedNewColor, setAddedNewColor] = useState(seedColors[0].colors);
+  // const [addedNewColor, setAddedNewColor] = useState(props.palettes[0].colors);
   // const [name, setColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
   // const [genColor, setGenColor] = useState('');
