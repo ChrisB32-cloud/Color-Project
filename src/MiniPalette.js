@@ -25,7 +25,6 @@ function MiniPalette(props) {
 
   // handlePalettes();
 
-  console.log('Rendering', props.id);
   return (
     <div className={classes.root}>
       <div className={classes.deleteBox}>

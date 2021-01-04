@@ -64,8 +64,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.value);
-
     return (
       <Route
         render={({ location }) => (
@@ -103,7 +101,7 @@ class App extends Component {
                     </Page>
                   )}
                 />
-                {/* <Route
+                <Route
                   exact
                   path="/"
                   render={routeProps => (
@@ -116,7 +114,7 @@ class App extends Component {
                       />
                     </Page>
                   )}
-                /> */}
+                />
                 <Route
                   exact
                   path="/palette/:id"
